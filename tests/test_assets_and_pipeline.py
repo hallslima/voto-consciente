@@ -147,6 +147,22 @@ def test_runtime_does_not_consume_generated_reviewed_or_examples():
     assert "example.reviewed.json" not in source
     assert 'load_json("questions.json")' in source
     assert 'load_json("candidates.json")' in source
+    frontend = (ROOT / "src" / "main.jsx").read_text(encoding="utf-8")
+    assert "Parte do acervo encontra-se em processo de revisão humana" in frontend
+    assert "Plano oficial do TSE" in frontend
+    assert "Cálculo determinístico" in frontend
+    assert "99 testes automatizados aprovados" in frontend
+    assert "['41', 'evidências revisadas no piloto']" in frontend
+    assert "['79', 'evidências pendentes de revisão']" in frontend
+    assert "Rever respostas" in frontend
+    assert "Refazer questionário" in frontend
+    assert "useRef" in frontend
+    assert "#resultados" in frontend
+    assert "prefers-reduced-motion: reduce" in frontend
+    assert "Resultados calculados. Exibindo o mapa das suas escolhas." in frontend
+    assert 'aria-live="polite"' in frontend
+    assert 'aria-busy={submitting}' in frontend
+    assert "6 testes aprovados" not in frontend
 
 
 def extraction_manifest():
