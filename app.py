@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 from dataclasses import asdict
 from pathlib import Path
 from typing import Any
@@ -14,6 +15,20 @@ from validation import validate_matrix
 
 ROOT = Path(__file__).resolve().parent
 DATA_DIR = ROOT / "data"
+LOCAL_FRONTEND_ORIGINS = (
+    "http://127.0.0.1:5173",
+    "http://localhost:5173",
+    "http://127.0.0.1:5174",
+    "http://localhost:5174",
+)
+
+
+def parse_frontend_origins(value: str | None = None) -> list[str]:
+    configured = os.getenv("FRONTEND_ORIGINS", "") if value is None else value
+    origins = [origin.strip().rstrip("/") for origin in configured.split(",") if origin.strip()]
+    if "*" in origins:
+        raise ValueError("FRONTEND_ORIGINS não pode conter '*' quando credenciais estão habilitadas")
+    return list(dict.fromkeys((*LOCAL_FRONTEND_ORIGINS, *origins)))
 
 
 def load_json(filename: str) -> Any:
@@ -35,11 +50,7 @@ class QuestionnairePayload(BaseModel):
 app = FastAPI(title="Voto Consciente Pernambuco API")
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-    ],
-    allow_origin_regex=r"http://(localhost|127\.0\.0\.1):517[3-9]$",
+    allow_origins=parse_frontend_origins(),
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
