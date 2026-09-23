@@ -1,46 +1,10 @@
 ﻿evidence_id;candidate_id;candidate_name;theme;subtheme;evidence_level;neutral_summary;proposed_action;target_population;original_excerpt;page;source_file;source_sha256;limitations;document_decision;excerpt_matches_page;summary_preserves_meaning;theme_is_correct;evidence_level_is_correct;predominant_jurisdiction;matrix_eligibility;eligibility_justification;correction_notes;reviewer;reviewed_at
-camila-saude-publica-001;camila;Professora Camila;Saúde pública;Gestão pública;3;Defende encerrar repasses públicos a organizações sociais privadas que gerenciam a saúde.;Encerrar os repasses indicados.;Usuários e trabalhadores do SUS.;"Fortalecimento  do  SUS:  Como  partido  que  possui  em  suas  bases  trabalhadoras  do  
-SUS,  especialmente  na  enfermagem,  a  UP  defende  o  fim  do  repasse  de  verbas  
-públicas  para  organizações  sociais  privadas  (OSs)  que  gerenciam  a  saúde.";p. 4;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""Não há prazo, transição contratual, valores ou modelo administrativo substituto.""]";;;;;;;;;;;
-camila-saude-publica-002;camila;Professora Camila;Saúde pública;Rede no interior;3;Propõe construir e equipar hospitais regionais de especialidades no Agreste, incluindo terapias para crianças atípicas.;Direcionar receita estadual para a infraestrutura descrita.;Moradores do Agreste e crianças atípicas, com referência a pacientes que se deslocam à capital.;"Infraestrutura  no  Interior:  Direcionar  a  receita  do  estado  para  a  construção  e  
-aparelhamento  de  hospitais  regionais  de  especialidades  no  Agreste,  incluindo  
-terapias  para  crianças  atípicas,  estancando  a  necessidade  de  deslocamento  forçado  
-de  pacientes  até  a  capital.";p. 4;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""Não há quantidade de hospitais, locais, prazo, orçamento ou modelo de gestão.""]";;;;;;;;;;;
-camila-saude-publica-003;camila;Professora Camila;Saúde pública;Profissionais no interior;3;Propõe contratar por concurso médicos, enfermeiros e equipes técnicas para atuação no interior.;Realizar concursos estatutários e fixar profissionais no interior.;Médicos, enfermeiros, equipes técnicas e população do interior.;"Interiorização  de  Profissionais:  Garantir  a  contratação  de  médicos,  enfermeiros  e  
-equipes  técnicas  por  meio  de  concursos  públicos  estatutários  com  salários  dignos,  
-fixando  os  profissionais  no  interior  do  estado.";p. 4;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""Não há vagas, remuneração, lotação ou prazo.""]";;;;;;;;;;;
-camila-saude-publica-004;camila;Professora Camila;Saúde pública;Saúde LGBTI+;3;Propõe ampliar acesso a PrEP e PEP para travestis e transexuais e oferecer educação em direitos humanos a profissionais.;Ampliar os acessos e realizar a formação descrita.;Travestis, transexuais e profissionais da saúde.;"Políticas  públicas  de  apoio  à  saúde  da  população  LGBTI+:  ampliação  do  acesso  de  
-Profilaxia  Pré  Exposição  (PREP)  e  Pós  Exposição  para  a  população  de  travestis  e  
-transexuais  (PEP)  e  educação  em  direitos  humanos  para  profissionais  da  saúde.";p. 4;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""O texto extraído associa siglas de modo possivelmente impreciso; requer conferência humana no original."", ""Não há cobertura, prazo, meta ou recursos.""]";;;;;;;;;;;
-camila-saude-publica-005;camila;Professora Camila;Saúde pública;Atenção hospitalar e básica;2;Propõe ampliar atenção médica em hospitais e postos e valorizar profissionais.;Ampliar atendimento e valorizar profissionais.;Usuários de hospitais e postos de saúde e seus profissionais.;"Ampliar  a  atenção  médica  de  
-hospitais  e  postos  de  saúde  e  valorizar  os  profissionais.";p. 2;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""Não há modelo de gestão, ação operacional, meta, prazo ou recursos.""]";;;;;;;;;;;
-camila-saude-publica-006;camila;Professora Camila;Saúde pública;Acesso universal;2;Defende saúde pública gratuita para todos e fim da exploração por planos privados.;Garantir saúde pública gratuita e executar a mudança indicada para planos privados.;Toda a população.;"Garantia
- 
-de
- 
-saúde
- 
-pública
- 
-e
- 
-gratuita
- 
-para
- 
-todos;
- 
-fim
- 
-da
- 
-exploração
- 
-dos
- 
-planos  de  saúde  privados;";p. 7;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""Trecho pertence ao programa nacional reproduzido no plano; não detalha competência estadual, transição, prazo ou execução.""]";;;;;;;;;;;
-camila-educacao-001;camila;Professora Camila;Educação;Financiamento e condições escolares;3;Propõe destinar 10% do PIB estadual à educação, com merenda e valorização profissional.;Destinar o percentual e executar as medidas educacionais descritas.;Estudantes e profissionais da educação estadual.;"Garantia  de  10%  do  PIB  do  nosso  estado  para  a  educação  estadual.  Todas  as  
-escolas  com  merenda  de  qualidade  e  profissionais  da  educação  valorizados;";p. 2;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""Não define base de cálculo, cronograma, padrão da merenda ou parâmetros de valorização.""]";;;;;;;;;;;
+camila-assistencia-social-e-combate-a-fome-001;camila;Professora Camila;Assistência social e combate à fome;Participação popular;3;Propõe conselhos populares para deliberar sobre investimentos em serviços sociais e infraestrutura.;Instituir deliberação popular sobre os investimentos enumerados.;Trabalhadores e movimentos populares mencionados.;"conselhos  
+populares  formados  por  trabalhadores  e  movimentos  como  o  Movimento  nos  
+Bairros,  Vilas  e  Favelas  (MLB)  e  o  Movimento  Luta  de  Classes  (MLC)  para  deliberar  
+sobre  investimentos  em  saneamento,  transporte  e  creches.";p. 2;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""A evidência é transversal e não especifica assistência social diretamente, regras dos conselhos, prazo ou orçamento.""]";;;;;;;;;;;
+camila-assistencia-social-e-combate-a-fome-002;camila;Professora Camila;Assistência social e combate à fome;Soberania alimentar;3;Propõe orientar agricultura à soberania alimentar, abastecimento local e mercados públicos para combater a fome.;Estimular produção destinada ao abastecimento local e mercados públicos.;População em situação de fome, produtores e consumidores locais.;"A  agricultura  deve  visar  a  Soberania  Alimentar,  estimulando  a  produção  para  o  
+abastecimento  local  e  os  mercados  públicos,  combatendo  a  fome";p. 3;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""O trecho tem caráter transversal com política agrícola; não há metas, público prioritário, prazo ou recursos.""]";;;;;;;;;;;
 camila-educacao-002;camila;Professora Camila;Educação;Creches integrais;3;Propõe ampliar e recuperar creches, com vagas integrais e profissionais habilitados para crianças típicas e atípicas.;Executar a expansão e melhoria da rede de creches.;Crianças típicas e atípicas, da capital ao sertão.;"Cuidados  com  a  infância:  Ampliação  da  rede  de  creches  e  melhoria  da  
 infraestrutura
  
@@ -89,6 +53,8 @@ típicas
 e
  
 atípicas.";p. 1;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""Não há quantidade de vagas ou unidades, prazo ou orçamento.""]";;;;;;;;;;;
+camila-educacao-001;camila;Professora Camila;Educação;Financiamento e condições escolares;3;Propõe destinar 10% do PIB estadual à educação, com merenda e valorização profissional.;Destinar o percentual e executar as medidas educacionais descritas.;Estudantes e profissionais da educação estadual.;"Garantia  de  10%  do  PIB  do  nosso  estado  para  a  educação  estadual.  Todas  as  
+escolas  com  merenda  de  qualidade  e  profissionais  da  educação  valorizados;";p. 2;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""Não define base de cálculo, cronograma, padrão da merenda ou parâmetros de valorização.""]";;;;;;;;;;;
 camila-educacao-003;camila;Professora Camila;Educação;UPE e escolas;3;Propõe ampliar a UPE e reformar escolas com merenda e valorização de professores e funcionários.;Investir na ampliação e reforma descritas.;Comunidade da UPE, estudantes e trabalhadores escolares.;"Vamos  investir  na  ampliação  da  UPE,  reforma  das  escolas  com  merenda  de  
 qualidade  e  professores  e  funcionários  valorizados.";p. 2;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""O trecho possui caráter transversal e não informa campi, escolas, metas, prazo ou recursos.""]";;;;;;;;;;;
 camila-educacao-004;camila;Professora Camila;Educação;Interiorização do ensino superior;3;Propõe enfrentar o sucateamento escolar e expandir vagas universitárias públicas no interior.;Recuperar escolas e expandir vagas no interior.;Estudantes de escolas públicas e do ensino superior no interior.;"Educação  Pública  e  Acessível:  Luta  contra  o  sucateamento  das  escolas  públicas  e  
@@ -126,6 +92,152 @@ na
 educação.  Garantia  de  livre  acesso  do  povo  à  universidade  e/ou  cursos  
 técnicos  profissionalizantes;  fim  do  vestibular,  vestibulinho  ou  qualquer  
 processo  seletivo.";p. 6;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""Trecho pertence ao programa nacional e não detalha competência estadual, transição, vagas, prazo ou recursos.""]";;;;;;;;;;;
+camila-emprego-e-renda-001;camila;Professora Camila;Emprego e renda;Jornada e salário mínimo;3;Propõe apoio ao fim da escala 6x1 e aumento de 100% do salário mínimo.;Apoiar as mudanças trabalhistas e salariais descritas.;Trabalhadores e população afetada pelo salário mínimo.;"Valorização  do  Trabalho:  Apoio  institucional  irrestrito  ao  fim  da  escala  6x1  e  defesa  
+de  aumento  de  100%  do  salário  mínimo  para  recuperar  o  poder  de  compra  da  
+população.";p. 2;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""Não detalha competência estadual, mecanismo, valor resultante, prazo ou implementação."", ""Proposta repetida em outras páginas e consolidada sem elevar o nível.""]";;;;;;;;;;;
+camila-emprego-e-renda-002;camila;Professora Camila;Emprego e renda;Frentes públicas de trabalho;3;Propõe frentes públicas regionalizadas para executar obras e gerar empregos locais.;Criar as frentes e executar obras estruturais.;Trabalhadores das localidades e regiões do estado.;"Infraestrutura  Estatal:  Criação  de  frentes  públicas  de  trabalho  regionalizadas  para  
+gerenciar  e  executar  obras  estruturais,  gerando  emprego  nas  próprias  localidades.";p. 3;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""Não há quantidade de postos, obras, vínculos, prazo ou orçamento.""]";;;;;;;;;;;
+camila-emprego-e-renda-003;camila;Professora Camila;Emprego e renda;Direitos no trabalho;3;Propõe fiscalização trabalhista no polo têxtil e comércio do Agreste, com defesa de direitos e EPIs.;Realizar fiscalizações rigorosas para garantir os direitos enumerados.;Trabalhadores de confecções e comércio do Agreste.;"Combate  à  Exploração  no  Trabalho:  O  polo  têxtil  e  o  comércio  do  Agreste  sofrem  
+severamente  com  jornadas  exaustivas  e  informalidade.  A  prioridade  é  combater  a  
+escala  6x1,  com  aumento  de  100%  do  salário  mínimo  e  realizar  fiscalizações  
+rigorosas  nas  confecções  e  comércios  para  garantir  o  pagamento  de  FGTS,  horas  
+extras  e  fornecimento  de  EPIs.";p. 3;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""Trecho também repete escala e salário, consolidados em outro registro; não há equipe, meta, prazo ou órgão executor.""]";;;;;;;;;;;
+camila-emprego-e-renda-004;camila;Professora Camila;Emprego e renda;Pequeno produtor e comércio;3;Propõe direcionar recursos e crédito à agricultura familiar e infraestrutura a feirantes e pequenos comerciantes.;Canalizar crédito e recursos e garantir a infraestrutura mencionada.;Agricultura familiar, feirantes e pequenos comerciantes locais.;"Apoio  Direto  ao  Pequeno  Produtor:  Romper  com  o  financiamento  direcionado  ao  
+agronegócio  e  as  grandes  agroindústrias.  Os  recursos  estaduais  e  o  crédito  devem  
+ser  canalizados  para  a  agricultura  familiar  e  para  garantir  infraestrutura  digna  
+(cobertura,  segurança,  saneamento)  para  feirantes  e  pequenos  comerciantes  locais.";p. 3;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""O trecho reúne apoio financeiro e infraestrutura; não há valores, critérios, prazo ou órgãos executores.""]";;;;;;;;;;;
+camila-emprego-e-renda-005;camila;Professora Camila;Emprego e renda;Emprego jovem;3;Propõe fomentar empregos formais por investimentos estatais em habitação popular e saneamento.;Gerar postos formais por meio dos investimentos indicados.;Juventude do interior, conforme o título da seção.;"Geração  de  Emprego  Digno:  Fomentar  postos  de  trabalho  formais  por  meio  de  
+investimentos  estatais  em  habitação  popular";p. 5;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""A frase continua com saneamento fora do recorte temático; não há postos, obras, prazo ou orçamento.""]";;;;;;;;;;;
+camila-emprego-e-renda-006;camila;Professora Camila;Emprego e renda;Garantia de trabalho;2;Defende trabalho para pessoas adultas capazes e proibição do trabalho infantil.;Garantir trabalho adulto e proibir exploração infantil.;Pessoas adultas capazes de trabalhar e crianças sujeitas à exploração.;"Garantia
+ 
+de
+ 
+emprego
+ 
+e
+ 
+trabalho
+ 
+obrigatórios
+ 
+para
+ 
+todas
+ 
+as
+ 
+pessoas
+ 
+adultas
+ 
+capazes  de  trabalhar;  proibição  da  exploração  do  trabalho  infantil;";p. 6;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""Trecho pertence ao programa nacional e não define instrumentos, competência estadual, prazo ou recursos.""]";;;;;;;;;;;
+camila-mobilidade-e-transporte-001;camila;Professora Camila;Mobilidade e transporte;Metrô público;3;Propõe suspender imediatamente a privatização do Metrô do Recife.;Suspender o processo de privatização.;"Usuários e trabalhadores do Metrô do Recife; público não explicitado no trecho.";"Fim  e  reversão  das  privatizações:  Suspensão  imediata  do  processo  de  privatização  
+do
+ 
+metrô
+ 
+do
+ 
+Recife";p. 1;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""O recorte integra um parágrafo transversal sobre diferentes empresas; não há plano de gestão, prazo posterior ou recursos.""]";;;;;;;;;;;
+camila-mobilidade-e-transporte-002;camila;Professora Camila;Mobilidade e transporte;Participação orçamentária;3;Propõe que conselhos populares deliberem sobre investimentos, incluindo transporte.;Dar aos conselhos citados deliberação sobre os investimentos.;Trabalhadores e movimentos populares mencionados.;"conselhos  
+populares  formados  por  trabalhadores  e  movimentos  como  o  Movimento  nos  
+Bairros,  Vilas  e  Favelas  (MLB)  e  o  Movimento  Luta  de  Classes  (MLC)  para  deliberar  
+sobre  investimentos  em  saneamento,  transporte  e  creches.";p. 2;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""A ação é transversal a saneamento, transporte e creches; não há regra de composição, competência, prazo ou orçamento.""]";;;;;;;;;;;
+camila-mobilidade-e-transporte-003;camila;Professora Camila;Mobilidade e transporte;Rodovias e pedágios;2;Propõe extinguir concessões rodoviárias e cobrança de pedágios.;Encerrar o modelo e a cobrança indicados.;Pequenos agricultores, feirantes e demais usuários das rodovias.;"Extinção  do  modelo  de  concessões  de  rodovias  e  cobrança  de  pedágios,  que  
+oneram  o  custo  de  vida  e  o  escoamento  da  produção  de  pequenos  agricultores  e  
+feirantes.";p. 5;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""Não há contratos, trechos, transição, prazo ou fonte de manutenção.""]";;;;;;;;;;;
+camila-mobilidade-e-transporte-004;camila;Professora Camila;Mobilidade e transporte;Transporte coletivo estatal;2;Propõe estatizar todos os meios de transporte coletivo.;Estatizar os meios de transporte coletivo.;"Usuários e trabalhadores do transporte coletivo; não especificado no trecho.";"Estatização
+ 
+de
+ 
+todos
+ 
+os
+ 
+meios
+ 
+de
+ 
+transporte
+ 
+coletivo.";p. 6;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""Trecho pertence ao programa nacional e não detalha competência estadual, tarifa, transição, prazo ou recursos.""]";;;;;;;;;;;
+camila-saneamento-001;camila;Professora Camila;Saneamento;Controle público da Compesa;3;Propõe suspender a concessão ou venda da Compesa e restabelecer controle público.;Bloquear a concessão ou venda e manter controle público.;População atendida pela Compesa.;"Suspensão  imediata  do  processo  de  privatização  
+do
+ 
+metrô
+ 
+do
+ 
+Recife
+ 
+e
+ 
+da
+ 
+concessão/venda
+ 
+da
+ 
+Compesa,
+ 
+restabelecendo
+ 
+o
+ 
+controle
+ 
+100%
+ 
+público";p. 1;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""O trecho é transversal a outras privatizações e não detalha gestão, transição, prazo ou recursos.""]";;;;;;;;;;;
+camila-saneamento-003;camila;Professora Camila;Saneamento;Consórcios privados;2;Propõe extinguir consórcios intermunicipais desenhados para transferência privada dos serviços de água e saneamento.;Extinguir os consórcios descritos.;População atendida por serviços de água e saneamento.;"Fim  dos  consórcios  privados  regionalizados.  Extinção  de  consórcios  
+intermunicipais  de  saneamento  e  água  desenhados  para  entregar  os  serviços  à  
+iniciativa  privada.";p. 3;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""Não identifica consórcios, transição, prazo ou arranjo substituto.""]";;;;;;;;;;;
+camila-saneamento-002;camila;Professora Camila;Saneamento;Universalização pública;3;Propõe investimento direto estadual para ampliar redes de distribuição e adutoras no interior.;Investir na expansão da infraestrutura descrita.;População do interior.;"Universalização  Pública  do  Saneamento:  Investimento  massivo  de  recursos  diretos  
+do  Estado  na  ampliação  de  redes  de  distribuição  e  adutoras  para  o  interior.";p. 4;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""Não há localidades, cobertura, meta temporal, valor ou cronograma.""]";;;;;;;;;;;
+camila-saneamento-004;camila;Professora Camila;Saneamento;Infraestrutura hídrica rural;3;Propõe programas estatais de cisternas, barreiros e irrigação para assentamentos e agricultura familiar.;Implementar os programas e infraestruturas indicados.;Assentamentos da reforma agrária e produtores da agricultura familiar.;"Infraestrutura  de  Convivência:  Implementação  de  programas  estatais  para  a  
+construção  de  cisternas,  pequenos  barreiros  e  sistemas  de  irrigação  voltados  
+exclusivamente  para  os  assentamentos  da  reforma  agrária  e  produtores  da  
+agricultura  familiar";p. 4;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""Trecho tem caráter transversal entre água, produção e saneamento; não há metas, prazo, localidades ou orçamento.""]";;;;;;;;;;;
+camila-saude-publica-005;camila;Professora Camila;Saúde pública;Atenção hospitalar e básica;2;Propõe ampliar atenção médica em hospitais e postos e valorizar profissionais.;Ampliar atendimento e valorizar profissionais.;Usuários de hospitais e postos de saúde e seus profissionais.;"Ampliar  a  atenção  médica  de  
+hospitais  e  postos  de  saúde  e  valorizar  os  profissionais.";p. 2;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""Não há modelo de gestão, ação operacional, meta, prazo ou recursos.""]";;;;;;;;;;;
+camila-saude-publica-001;camila;Professora Camila;Saúde pública;Gestão pública;3;Defende encerrar repasses públicos a organizações sociais privadas que gerenciam a saúde.;Encerrar os repasses indicados.;Usuários e trabalhadores do SUS.;"Fortalecimento  do  SUS:  Como  partido  que  possui  em  suas  bases  trabalhadoras  do  
+SUS,  especialmente  na  enfermagem,  a  UP  defende  o  fim  do  repasse  de  verbas  
+públicas  para  organizações  sociais  privadas  (OSs)  que  gerenciam  a  saúde.";p. 4;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""Não há prazo, transição contratual, valores ou modelo administrativo substituto.""]";;;;;;;;;;;
+camila-saude-publica-002;camila;Professora Camila;Saúde pública;Rede no interior;3;Propõe construir e equipar hospitais regionais de especialidades no Agreste, incluindo terapias para crianças atípicas.;Direcionar receita estadual para a infraestrutura descrita.;Moradores do Agreste e crianças atípicas, com referência a pacientes que se deslocam à capital.;"Infraestrutura  no  Interior:  Direcionar  a  receita  do  estado  para  a  construção  e  
+aparelhamento  de  hospitais  regionais  de  especialidades  no  Agreste,  incluindo  
+terapias  para  crianças  atípicas,  estancando  a  necessidade  de  deslocamento  forçado  
+de  pacientes  até  a  capital.";p. 4;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""Não há quantidade de hospitais, locais, prazo, orçamento ou modelo de gestão.""]";;;;;;;;;;;
+camila-saude-publica-003;camila;Professora Camila;Saúde pública;Profissionais no interior;3;Propõe contratar por concurso médicos, enfermeiros e equipes técnicas para atuação no interior.;Realizar concursos estatutários e fixar profissionais no interior.;Médicos, enfermeiros, equipes técnicas e população do interior.;"Interiorização  de  Profissionais:  Garantir  a  contratação  de  médicos,  enfermeiros  e  
+equipes  técnicas  por  meio  de  concursos  públicos  estatutários  com  salários  dignos,  
+fixando  os  profissionais  no  interior  do  estado.";p. 4;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""Não há vagas, remuneração, lotação ou prazo.""]";;;;;;;;;;;
+camila-saude-publica-004;camila;Professora Camila;Saúde pública;Saúde LGBTI+;3;Propõe ampliar acesso a PrEP e PEP para travestis e transexuais e oferecer educação em direitos humanos a profissionais.;Ampliar os acessos e realizar a formação descrita.;Travestis, transexuais e profissionais da saúde.;"Políticas  públicas  de  apoio  à  saúde  da  população  LGBTI+:  ampliação  do  acesso  de  
+Profilaxia  Pré  Exposição  (PREP)  e  Pós  Exposição  para  a  população  de  travestis  e  
+transexuais  (PEP)  e  educação  em  direitos  humanos  para  profissionais  da  saúde.";p. 4;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""O texto extraído associa siglas de modo possivelmente impreciso; requer conferência humana no original."", ""Não há cobertura, prazo, meta ou recursos.""]";;;;;;;;;;;
+camila-saude-publica-006;camila;Professora Camila;Saúde pública;Acesso universal;2;Defende saúde pública gratuita para todos e fim da exploração por planos privados.;Garantir saúde pública gratuita e executar a mudança indicada para planos privados.;Toda a população.;"Garantia
+ 
+de
+ 
+saúde
+ 
+pública
+ 
+e
+ 
+gratuita
+ 
+para
+ 
+todos;
+ 
+fim
+ 
+da
+ 
+exploração
+ 
+dos
+ 
+planos  de  saúde  privados;";p. 7;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""Trecho pertence ao programa nacional reproduzido no plano; não detalha competência estadual, transição, prazo ou execução.""]";;;;;;;;;;;
 camila-seguranca-publica-001;camila;Professora Camila;Segurança pública;Atendimento à mulher;3;Propõe funcionamento 24 horas das Delegacias da Mulher com reforço de viaturas, efetivo e atendimento psicológico e jurídico.;Expandir horário e estrutura das delegacias especializadas.;Mulheres que demandem atendimento especializado.;"Combate  à  violência  de  gênero:  Expansão  urgente  do  funcionamento  das  
 Delegacias
  
@@ -199,115 +311,3 @@ aos
 movimentos
  
 sociais;";p. 8;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""Trecho pertence ao programa nacional e não define instituição substituta, transição, competência, prazo ou execução.""]";;;;;;;;;;;
-camila-mobilidade-e-transporte-001;camila;Professora Camila;Mobilidade e transporte;Metrô público;3;Propõe suspender imediatamente a privatização do Metrô do Recife.;Suspender o processo de privatização.;"Usuários e trabalhadores do Metrô do Recife; público não explicitado no trecho.";"Fim  e  reversão  das  privatizações:  Suspensão  imediata  do  processo  de  privatização  
-do
- 
-metrô
- 
-do
- 
-Recife";p. 1;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""O recorte integra um parágrafo transversal sobre diferentes empresas; não há plano de gestão, prazo posterior ou recursos.""]";;;;;;;;;;;
-camila-mobilidade-e-transporte-002;camila;Professora Camila;Mobilidade e transporte;Participação orçamentária;3;Propõe que conselhos populares deliberem sobre investimentos, incluindo transporte.;Dar aos conselhos citados deliberação sobre os investimentos.;Trabalhadores e movimentos populares mencionados.;"conselhos  
-populares  formados  por  trabalhadores  e  movimentos  como  o  Movimento  nos  
-Bairros,  Vilas  e  Favelas  (MLB)  e  o  Movimento  Luta  de  Classes  (MLC)  para  deliberar  
-sobre  investimentos  em  saneamento,  transporte  e  creches.";p. 2;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""A ação é transversal a saneamento, transporte e creches; não há regra de composição, competência, prazo ou orçamento.""]";;;;;;;;;;;
-camila-mobilidade-e-transporte-003;camila;Professora Camila;Mobilidade e transporte;Rodovias e pedágios;2;Propõe extinguir concessões rodoviárias e cobrança de pedágios.;Encerrar o modelo e a cobrança indicados.;Pequenos agricultores, feirantes e demais usuários das rodovias.;"Extinção  do  modelo  de  concessões  de  rodovias  e  cobrança  de  pedágios,  que  
-oneram  o  custo  de  vida  e  o  escoamento  da  produção  de  pequenos  agricultores  e  
-feirantes.";p. 5;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""Não há contratos, trechos, transição, prazo ou fonte de manutenção.""]";;;;;;;;;;;
-camila-mobilidade-e-transporte-004;camila;Professora Camila;Mobilidade e transporte;Transporte coletivo estatal;2;Propõe estatizar todos os meios de transporte coletivo.;Estatizar os meios de transporte coletivo.;"Usuários e trabalhadores do transporte coletivo; não especificado no trecho.";"Estatização
- 
-de
- 
-todos
- 
-os
- 
-meios
- 
-de
- 
-transporte
- 
-coletivo.";p. 6;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""Trecho pertence ao programa nacional e não detalha competência estadual, tarifa, transição, prazo ou recursos.""]";;;;;;;;;;;
-camila-saneamento-001;camila;Professora Camila;Saneamento;Controle público da Compesa;3;Propõe suspender a concessão ou venda da Compesa e restabelecer controle público.;Bloquear a concessão ou venda e manter controle público.;População atendida pela Compesa.;"Suspensão  imediata  do  processo  de  privatização  
-do
- 
-metrô
- 
-do
- 
-Recife
- 
-e
- 
-da
- 
-concessão/venda
- 
-da
- 
-Compesa,
- 
-restabelecendo
- 
-o
- 
-controle
- 
-100%
- 
-público";p. 1;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""O trecho é transversal a outras privatizações e não detalha gestão, transição, prazo ou recursos.""]";;;;;;;;;;;
-camila-saneamento-002;camila;Professora Camila;Saneamento;Universalização pública;3;Propõe investimento direto estadual para ampliar redes de distribuição e adutoras no interior.;Investir na expansão da infraestrutura descrita.;População do interior.;"Universalização  Pública  do  Saneamento:  Investimento  massivo  de  recursos  diretos  
-do  Estado  na  ampliação  de  redes  de  distribuição  e  adutoras  para  o  interior.";p. 4;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""Não há localidades, cobertura, meta temporal, valor ou cronograma.""]";;;;;;;;;;;
-camila-saneamento-003;camila;Professora Camila;Saneamento;Consórcios privados;2;Propõe extinguir consórcios intermunicipais desenhados para transferência privada dos serviços de água e saneamento.;Extinguir os consórcios descritos.;População atendida por serviços de água e saneamento.;"Fim  dos  consórcios  privados  regionalizados.  Extinção  de  consórcios  
-intermunicipais  de  saneamento  e  água  desenhados  para  entregar  os  serviços  à  
-iniciativa  privada.";p. 3;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""Não identifica consórcios, transição, prazo ou arranjo substituto.""]";;;;;;;;;;;
-camila-saneamento-004;camila;Professora Camila;Saneamento;Infraestrutura hídrica rural;3;Propõe programas estatais de cisternas, barreiros e irrigação para assentamentos e agricultura familiar.;Implementar os programas e infraestruturas indicados.;Assentamentos da reforma agrária e produtores da agricultura familiar.;"Infraestrutura  de  Convivência:  Implementação  de  programas  estatais  para  a  
-construção  de  cisternas,  pequenos  barreiros  e  sistemas  de  irrigação  voltados  
-exclusivamente  para  os  assentamentos  da  reforma  agrária  e  produtores  da  
-agricultura  familiar";p. 4;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""Trecho tem caráter transversal entre água, produção e saneamento; não há metas, prazo, localidades ou orçamento.""]";;;;;;;;;;;
-camila-emprego-e-renda-001;camila;Professora Camila;Emprego e renda;Jornada e salário mínimo;3;Propõe apoio ao fim da escala 6x1 e aumento de 100% do salário mínimo.;Apoiar as mudanças trabalhistas e salariais descritas.;Trabalhadores e população afetada pelo salário mínimo.;"Valorização  do  Trabalho:  Apoio  institucional  irrestrito  ao  fim  da  escala  6x1  e  defesa  
-de  aumento  de  100%  do  salário  mínimo  para  recuperar  o  poder  de  compra  da  
-população.";p. 2;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""Não detalha competência estadual, mecanismo, valor resultante, prazo ou implementação."", ""Proposta repetida em outras páginas e consolidada sem elevar o nível.""]";;;;;;;;;;;
-camila-emprego-e-renda-002;camila;Professora Camila;Emprego e renda;Frentes públicas de trabalho;3;Propõe frentes públicas regionalizadas para executar obras e gerar empregos locais.;Criar as frentes e executar obras estruturais.;Trabalhadores das localidades e regiões do estado.;"Infraestrutura  Estatal:  Criação  de  frentes  públicas  de  trabalho  regionalizadas  para  
-gerenciar  e  executar  obras  estruturais,  gerando  emprego  nas  próprias  localidades.";p. 3;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""Não há quantidade de postos, obras, vínculos, prazo ou orçamento.""]";;;;;;;;;;;
-camila-emprego-e-renda-003;camila;Professora Camila;Emprego e renda;Direitos no trabalho;3;Propõe fiscalização trabalhista no polo têxtil e comércio do Agreste, com defesa de direitos e EPIs.;Realizar fiscalizações rigorosas para garantir os direitos enumerados.;Trabalhadores de confecções e comércio do Agreste.;"Combate  à  Exploração  no  Trabalho:  O  polo  têxtil  e  o  comércio  do  Agreste  sofrem  
-severamente  com  jornadas  exaustivas  e  informalidade.  A  prioridade  é  combater  a  
-escala  6x1,  com  aumento  de  100%  do  salário  mínimo  e  realizar  fiscalizações  
-rigorosas  nas  confecções  e  comércios  para  garantir  o  pagamento  de  FGTS,  horas  
-extras  e  fornecimento  de  EPIs.";p. 3;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""Trecho também repete escala e salário, consolidados em outro registro; não há equipe, meta, prazo ou órgão executor.""]";;;;;;;;;;;
-camila-emprego-e-renda-004;camila;Professora Camila;Emprego e renda;Pequeno produtor e comércio;3;Propõe direcionar recursos e crédito à agricultura familiar e infraestrutura a feirantes e pequenos comerciantes.;Canalizar crédito e recursos e garantir a infraestrutura mencionada.;Agricultura familiar, feirantes e pequenos comerciantes locais.;"Apoio  Direto  ao  Pequeno  Produtor:  Romper  com  o  financiamento  direcionado  ao  
-agronegócio  e  as  grandes  agroindústrias.  Os  recursos  estaduais  e  o  crédito  devem  
-ser  canalizados  para  a  agricultura  familiar  e  para  garantir  infraestrutura  digna  
-(cobertura,  segurança,  saneamento)  para  feirantes  e  pequenos  comerciantes  locais.";p. 3;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""O trecho reúne apoio financeiro e infraestrutura; não há valores, critérios, prazo ou órgãos executores.""]";;;;;;;;;;;
-camila-emprego-e-renda-005;camila;Professora Camila;Emprego e renda;Emprego jovem;3;Propõe fomentar empregos formais por investimentos estatais em habitação popular e saneamento.;Gerar postos formais por meio dos investimentos indicados.;Juventude do interior, conforme o título da seção.;"Geração  de  Emprego  Digno:  Fomentar  postos  de  trabalho  formais  por  meio  de  
-investimentos  estatais  em  habitação  popular";p. 5;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""A frase continua com saneamento fora do recorte temático; não há postos, obras, prazo ou orçamento.""]";;;;;;;;;;;
-camila-emprego-e-renda-006;camila;Professora Camila;Emprego e renda;Garantia de trabalho;2;Defende trabalho para pessoas adultas capazes e proibição do trabalho infantil.;Garantir trabalho adulto e proibir exploração infantil.;Pessoas adultas capazes de trabalhar e crianças sujeitas à exploração.;"Garantia
- 
-de
- 
-emprego
- 
-e
- 
-trabalho
- 
-obrigatórios
- 
-para
- 
-todas
- 
-as
- 
-pessoas
- 
-adultas
- 
-capazes  de  trabalhar;  proibição  da  exploração  do  trabalho  infantil;";p. 6;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""Trecho pertence ao programa nacional e não define instrumentos, competência estadual, prazo ou recursos.""]";;;;;;;;;;;
-camila-assistencia-social-e-combate-a-fome-001;camila;Professora Camila;Assistência social e combate à fome;Participação popular;3;Propõe conselhos populares para deliberar sobre investimentos em serviços sociais e infraestrutura.;Instituir deliberação popular sobre os investimentos enumerados.;Trabalhadores e movimentos populares mencionados.;"conselhos  
-populares  formados  por  trabalhadores  e  movimentos  como  o  Movimento  nos  
-Bairros,  Vilas  e  Favelas  (MLB)  e  o  Movimento  Luta  de  Classes  (MLC)  para  deliberar  
-sobre  investimentos  em  saneamento,  transporte  e  creches.";p. 2;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""A evidência é transversal e não especifica assistência social diretamente, regras dos conselhos, prazo ou orçamento.""]";;;;;;;;;;;
-camila-assistencia-social-e-combate-a-fome-002;camila;Professora Camila;Assistência social e combate à fome;Soberania alimentar;3;Propõe orientar agricultura à soberania alimentar, abastecimento local e mercados públicos para combater a fome.;Estimular produção destinada ao abastecimento local e mercados públicos.;População em situação de fome, produtores e consumidores locais.;"A  agricultura  deve  visar  a  Soberania  Alimentar,  estimulando  a  produção  para  o  
-abastecimento  local  e  os  mercados  públicos,  combatendo  a  fome";p. 3;professora-camila-80.pdf;be2bd27896589c390b04d04ce233997a8e74e335f6f5a88023f6cbf255a85e9f;"[""O trecho tem caráter transversal com política agrícola; não há metas, público prioritário, prazo ou recursos.""]";;;;;;;;;;;

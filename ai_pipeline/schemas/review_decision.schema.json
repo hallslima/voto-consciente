@@ -2,8 +2,9 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Human evidence review decision",
   "type": "object",
-  "required": ["document_decision", "excerpt_matches_page", "summary_preserves_meaning", "theme_is_correct", "evidence_level_is_correct", "predominant_jurisdiction", "matrix_eligibility", "eligibility_justification", "correction_notes", "reviewer", "reviewed_at"],
+  "required": ["evidence_id", "document_decision", "excerpt_matches_page", "summary_preserves_meaning", "theme_is_correct", "evidence_level_is_correct", "predominant_jurisdiction", "matrix_eligibility", "eligibility_justification", "correction_notes", "reviewer", "reviewed_at"],
   "properties": {
+    "evidence_id": {"type": "string", "minLength": 1},
     "document_decision": {"enum": ["approved", "needs_correction", "rejected"]},
     "excerpt_matches_page": {"enum": ["yes", "no", ""]},
     "summary_preserves_meaning": {"enum": ["yes", "no", ""]},
@@ -13,20 +14,30 @@
     "matrix_eligibility": {"enum": ["yes", "no", "needs_adjustment"]},
     "eligibility_justification": {"type": "string"},
     "correction_notes": {"type": "string"},
-    "reviewer": {"type": "string", "minLength": 1},
+    "reviewer": {"type": "string", "pattern": ".*\\S.*"},
     "reviewed_at": {"type": "string", "format": "date-time"}
   },
   "allOf": [
     {
-      "if": {"properties": {"document_decision": {"const": "approved"}}},
-      "then": {
-        "properties": {
-          "excerpt_matches_page": {"enum": ["yes", "no"]},
-          "summary_preserves_meaning": {"enum": ["yes", "no"]},
-          "theme_is_correct": {"enum": ["yes", "no"]},
-          "evidence_level_is_correct": {"enum": ["yes", "no"]}
-        }
-      }
+      "if": {"properties": {"document_decision": {"const": "approved"}}, "required": ["document_decision"]},
+      "then": {"properties": {
+        "excerpt_matches_page": {"const": "yes"},
+        "summary_preserves_meaning": {"const": "yes"},
+        "theme_is_correct": {"const": "yes"},
+        "evidence_level_is_correct": {"const": "yes"}
+      }}
+    },
+    {
+      "if": {"properties": {"document_decision": {"enum": ["needs_correction", "rejected"]}}, "required": ["document_decision"]},
+      "then": {"properties": {"correction_notes": {"type": "string", "pattern": ".*\\S.*"}}}
+    },
+    {
+      "if": {"properties": {"matrix_eligibility": {"enum": ["no", "needs_adjustment"]}}, "required": ["matrix_eligibility"]},
+      "then": {"properties": {"eligibility_justification": {"type": "string", "pattern": ".*\\S.*"}}}
+    },
+    {
+      "if": {"properties": {"predominant_jurisdiction": {"const": "uncertain"}}, "required": ["predominant_jurisdiction"]},
+      "then": {"properties": {"eligibility_justification": {"type": "string", "pattern": ".*\\S.*"}}}
     }
   ],
   "additionalProperties": false

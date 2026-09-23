@@ -1,57 +1,63 @@
 # Fluxo de revisão humana por CSV
 
-Este fluxo permite revisar evidências sem editar JSON. A exportação não toma decisões, e a importação não publica nada na matriz nem altera as evidências geradas.
+## Finalidade e responsabilidades
 
-## Exportar
+O fluxo permite que integrantes designados confiram as evidências documentais sem editar JSON. O exportador apenas prepara planilhas: ele nunca aprova, rejeita ou infere decisões. Cada revisor humano é responsável por conferir o trecho na página indicada, preencher seu nome real e registrar a data e hora da revisão.
 
-Na raiz do projeto, execute:
+Aprovação documental e elegibilidade para a matriz são decisões diferentes. `document_decision=approved` significa que trecho, resumo, tema e nível foram conferidos. `matrix_eligibility=yes` é uma decisão adicional sobre uso na matriz. Uma evidência pode ser documentalmente aprovada e não elegível; ela permanece na base revisada, vinculada à justificativa, mas a consolidação a exclui.
 
-```powershell
-python ai_pipeline/scripts/export_review_csv.py
-```
+## Exportação
 
-Para exportar apenas um candidato, informe `jeremias`, `camila` ou `victor_assis`:
+Execute na raiz do projeto:
 
 ```powershell
-python ai_pipeline/scripts/export_review_csv.py jeremias
+.\.venv\Scripts\python.exe ai_pipeline\scripts\export_review_csv.py --candidate jeremias
+.\.venv\Scripts\python.exe ai_pipeline\scripts\export_review_csv.py --candidate camila
+.\.venv\Scripts\python.exe ai_pipeline\scripts\export_review_csv.py --candidate victor_assis
+.\.venv\Scripts\python.exe ai_pipeline\scripts\export_review_csv.py --all
 ```
 
-Os arquivos são gravados em `data/reviewed/review-csv/`, em UTF-8 com BOM e separados por ponto e vírgula. As 79 decisões saem vazias.
+Os arquivos ficam em `data/reviewed/review-csv/`, com uma evidência por linha, ordem estável, UTF-8 com BOM e separador ponto e vírgula. Listas em `limitations` usam JSON, uma serialização reversível que não perde itens.
 
-## Preencher no Excel ou Google Sheets
+## Excel e Google Sheets
 
-No Excel em português, abra o CSV diretamente. Se o assistente de importação aparecer, selecione UTF-8 e delimitador ponto e vírgula. No Google Sheets, use **Arquivo > Importar > Fazer upload**, escolha ponto e vírgula como separador e não converta textos automaticamente.
+No Excel, abra ou importe o arquivo escolhendo UTF-8 e ponto e vírgula. Preserve UTF-8, mantenha o separador `;`, não altere cabeçalhos, não ordene apenas uma coluna isoladamente e salve como **CSV UTF-8**. Não use fórmulas nas células de decisão.
 
-Somente estas colunas de decisão devem ser preenchidas:
+No Google Sheets, escolha **Arquivo > Importar > Fazer upload**, desative a conversão automática de texto e selecione ponto e vírgula como separador. Ao concluir, baixe novamente como CSV e confira a codificação antes da importação.
 
-- `document_decision`: `approved`, `needs_correction` ou `rejected`;
-- `excerpt_matches_page`, `summary_preserves_meaning`, `theme_is_correct` e `evidence_level_is_correct`: `yes` ou `no`;
-- `predominant_jurisdiction`: `state`, `federal`, `municipal`, `shared` ou `uncertain`;
-- `matrix_eligibility`: `yes`, `no` ou `needs_adjustment`;
-- `eligibility_justification`, `correction_notes`, `reviewer` e `reviewed_at`.
+As colunas 1 a 14 são imutáveis: `evidence_id`, `candidate_id`, `candidate_name`, `theme`, `subtheme`, `evidence_level`, `neutral_summary`, `proposed_action`, `target_population`, `original_excerpt`, `page`, `source_file`, `source_sha256` e `limitations`.
 
-Não altere `evidence_id`, `candidate_id`, `candidate_name`, `theme`, `subtheme`, `evidence_level`, `neutral_summary`, `proposed_action`, `target_population`, `original_excerpt`, `page`, `source_file`, `source_sha256` ou `limitations`. O importador compara os campos protegidos com o JSON original e rejeita adulterações.
+Somente as colunas 15 a 25 podem ser preenchidas: `document_decision`, as quatro confirmações, `predominant_jurisdiction`, `matrix_eligibility`, `eligibility_justification`, `correction_notes`, `reviewer` e `reviewed_at`.
 
-`approved` confirma documentalmente o registro; `needs_correction` devolve-o para correção; `rejected` rejeita-o documentalmente. Aprovação documental não significa elegibilidade para a matriz. Um item aprovado com `matrix_eligibility=no` permanece na base revisada, com a justificativa, e não deve ser usado na matriz.
+## Valores e regras
 
-Informe o nome identificável do revisor em `reviewer`. Em `reviewed_at`, use data e hora ISO 8601, por exemplo `2026-09-23T14:30:00-03:00`. Itens aprovados exigem todas as quatro confirmações. `rejected` e `needs_correction` exigem `correction_notes`. Elegibilidade `no` ou `needs_adjustment`, e competência `uncertain`, exigem `eligibility_justification`.
+- `document_decision`: `approved`, `needs_correction` ou `rejected`.
+- Confirmações: `yes` ou `no`.
+- `predominant_jurisdiction`: `state`, `federal`, `municipal`, `shared` ou `uncertain`.
+- `matrix_eligibility`: `yes`, `no` ou `needs_adjustment`.
+- `reviewed_at`: data e hora ISO 8601, como `2026-09-23T14:30:00-03:00`.
 
-## Importar e corrigir erros
+Uma aprovação exige `yes` nas quatro confirmações. `needs_correction` e `rejected` exigem `correction_notes`. Elegibilidade `no` ou `needs_adjustment`, e competência `uncertain`, exigem `eligibility_justification`. Revisor, data, competência e elegibilidade são sempre obrigatórios.
 
-Depois de salvar o CSV preservando UTF-8 e ponto e vírgula, execute:
+Exemplo fictício: uma proposta documentada de atribuição exclusivamente federal pode receber `document_decision=approved`, quatro confirmações `yes`, `predominant_jurisdiction=federal`, `matrix_eligibility=no` e uma justificativa objetiva. Isso não publica a evidência.
+
+## Importação e mensagens de erro
 
 ```powershell
-python ai_pipeline/scripts/import_review_csv.py
+.\.venv\Scripts\python.exe ai_pipeline\scripts\import_review_csv.py --candidate jeremias
+.\.venv\Scripts\python.exe ai_pipeline\scripts\import_review_csv.py --candidate camila
+.\.venv\Scripts\python.exe ai_pipeline\scripts\import_review_csv.py --candidate victor_assis
+.\.venv\Scripts\python.exe ai_pipeline\scripts\import_review_csv.py --all
 ```
 
-Também é possível importar somente um candidato:
+O importador compara canonicamente todas as colunas imutáveis com o JSON gerado, valida as decisões pelo schema e acumula todos os erros. Os relatórios ficam em `data/reviewed/review-reports/` e indicam linha, campo e motivo, além das contagens da tentativa.
 
-```powershell
-python ai_pipeline/scripts/import_review_csv.py victor_assis
-```
+Mensagens como `coluna imutável foi alterada`, `evidence_id duplicado`, `registro ausente no CSV` ou falhas de enumeração indicam o que corrigir. Corrija apenas a planilha, preserve todas as linhas e execute novamente. Nenhum JSON parcial é criado.
 
-O importador valida o arquivo inteiro antes de escrever o JSON revisado. Havendo qualquer erro, nenhum registro daquele arquivo é promovido e um relatório `*.errors.json` é criado ao lado do CSV, com linha, campo e motivo. Corrija o CSV e execute novamente. Um arquivo válido gera `data/reviewed/evidence/<candidato>.reviewed.json`; os JSONs gerados originais permanecem intactos.
+Quando todas as linhas são válidas, o arquivo é promovido para `data/reviewed/evidence/`. Os dados documentais permanecem intactos; `needs_correction` continua `pending`; rejeitados são preservados como `rejected`; decisões de competência e elegibilidade ficam em uma estrutura vinculada por `evidence_id`.
 
-## Neutralidade
+## Neutralidade e limitações
 
-Confira o trecho na página indicada e avalie se o resumo preserva o sentido literal. Não acrescente intenção, viabilidade, juízo de valor ou informação externa. Use `correction_notes` para apontar objetivamente a divergência e `eligibility_justification` apenas para fundamentar competência e entrada na matriz. Em dúvida sobre a competência, registre `uncertain` e explique a dúvida.
+O revisor deve avaliar somente o conteúdo documental, sem inferir intenção, viabilidade, qualidade política ou informação externa. `correction_notes` deve descrever objetivamente a divergência. `eligibility_justification` deve tratar apenas da competência e do possível uso na matriz.
+
+O CSV não substitui consulta ao documento original, não resolve ambiguidades políticas e não publica na matriz. A publicação exige etapa separada e autorização explícita. É proibida qualquer aprovação automática ou preenchimento de decisão pelo script.

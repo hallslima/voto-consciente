@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import re
 from pathlib import Path
 
 
@@ -22,6 +23,16 @@ FIELDS = [
     "reviewed_at",
 ]
 DECISION_FIELDS = FIELDS[14:]
+IMMUTABLE_FIELDS = FIELDS[:14]
+
+
+def _page_key(value: object) -> tuple:
+    parts = re.split(r"(\d+)", str(value).casefold())
+    return tuple(int(part) if part.isdigit() else part for part in parts)
+
+
+def _record_key(record: dict) -> tuple:
+    return (str(record["theme"]).casefold(), _page_key(record["page"]), record["evidence_id"])
 
 
 def export_candidate(candidate_id: str, root: Path = ROOT) -> Path:
@@ -31,7 +42,7 @@ def export_candidate(candidate_id: str, root: Path = ROOT) -> Path:
     source = root / "data/generated/evidence" / f"{candidate_id}.generated.json"
     destination = root / "data/reviewed/review-csv" / filename
     payload = json.loads(source.read_text(encoding="utf-8"))
-    records = payload["records"]
+    records = sorted(payload["records"], key=_record_key)
     destination.parent.mkdir(parents=True, exist_ok=True)
     with destination.open("w", encoding="utf-8-sig", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=FIELDS, delimiter=";", lineterminator="\n")
@@ -48,9 +59,12 @@ def export_candidate(candidate_id: str, root: Path = ROOT) -> Path:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Exporta evidências pendentes para revisão humana em CSV.")
-    parser.add_argument("candidates", nargs="*", choices=sorted(CANDIDATES))
+    selection = parser.add_mutually_exclusive_group(required=True)
+    selection.add_argument("--candidate", choices=sorted(CANDIDATES))
+    selection.add_argument("--all", action="store_true", help="exporta as três candidaturas")
     args = parser.parse_args()
-    for candidate_id in args.candidates or CANDIDATES:
+    candidate_ids = CANDIDATES if args.all else (args.candidate,)
+    for candidate_id in candidate_ids:
         path = export_candidate(candidate_id)
         print(f"OK: {candidate_id} exportado para {path.relative_to(ROOT)}")
 
