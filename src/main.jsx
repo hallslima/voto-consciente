@@ -1,8 +1,8 @@
 import { StrictMode, useEffect, useMemo, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
+import { apiUrl } from './api';
 import './styles.css';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 const NO_OPINION = 'NO_OPINION';
 const WEIGHT_LABELS = { 1: 'Normal', 2: 'Importante', 3: 'Prioridade máxima' };
 const METHODOLOGY_NOTICE = 'As propostas foram estruturadas a partir dos planos de governo disponíveis no TSE, com apoio de inteligência artificial e validações técnicas. Parte do acervo encontra-se em processo de revisão humana. O resultado representa correspondência temática, não recomendação de voto, e não avalia a viabilidade ou o cumprimento das propostas.';
@@ -32,7 +32,7 @@ function App() {
   const shouldRevealResults = useRef(false);
 
   useEffect(() => {
-    fetch(`${API_URL}/api/bootstrap`)
+    fetch(apiUrl('/api/bootstrap'))
       .then((response) => {
         if (!response.ok) throw new Error('Não foi possível carregar a matriz.');
         return response.json();
@@ -102,7 +102,7 @@ function App() {
     setAnnouncement('');
     setSubmitting(true);
     try {
-      const response = await fetch(`${API_URL}/api/results`, {
+      const response = await fetch(apiUrl('/api/results'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ answers, weights }),
