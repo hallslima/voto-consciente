@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Human evidence review decision",
+  "type": "object",
+  "required": ["document_decision", "excerpt_matches_page", "summary_preserves_meaning", "theme_is_correct", "evidence_level_is_correct", "predominant_jurisdiction", "matrix_eligibility", "eligibility_justification", "correction_notes", "reviewer", "reviewed_at"],
+  "properties": {
+    "document_decision": {"enum": ["approved", "needs_correction", "rejected"]},
+    "excerpt_matches_page": {"enum": ["yes", "no", ""]},
+    "summary_preserves_meaning": {"enum": ["yes", "no", ""]},
+    "theme_is_correct": {"enum": ["yes", "no", ""]},
+    "evidence_level_is_correct": {"enum": ["yes", "no", ""]},
+    "predominant_jurisdiction": {"enum": ["state", "federal", "municipal", "shared", "uncertain"]},
+    "matrix_eligibility": {"enum": ["yes", "no", "needs_adjustment"]},
+    "eligibility_justification": {"type": "string"},
+    "correction_notes": {"type": "string"},
+    "reviewer": {"type": "string", "minLength": 1},
+    "reviewed_at": {"type": "string", "format": "date-time"}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"document_decision": {"const": "approved"}}},
+      "then": {
+        "properties": {
+          "excerpt_matches_page": {"enum": ["yes", "no"]},
+          "summary_preserves_meaning": {"enum": ["yes", "no"]},
+          "theme_is_correct": {"enum": ["yes", "no"]},
+          "evidence_level_is_correct": {"enum": ["yes", "no"]}
+        }
+      }
+    }
+  ],
+  "additionalProperties": false
+}

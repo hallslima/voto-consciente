@@ -7,7 +7,12 @@ from pathlib import Path
 
 def approved(records: list[dict]) -> list[dict]:
     """Only reviewed evidence may feed a generated matrix candidate."""
-    return [record for record in records if record.get("review_status") == "approved"]
+    return [
+        record
+        for record in records
+        if record.get("review_status") == "approved"
+        and record.get("matrix_eligibility") not in {"no", "needs_adjustment"}
+    ]
 
 
 def main() -> None:
