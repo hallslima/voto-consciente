@@ -162,6 +162,9 @@ def test_runtime_does_not_consume_generated_reviewed_or_examples():
     assert "Resultados calculados. Exibindo o mapa das suas escolhas." in frontend
     assert 'aria-live="polite"' in frontend
     assert 'aria-busy={submitting}' in frontend
+    assert "scrollIntoView" in frontend
+    assert "history.replaceState" in frontend
+    assert "Calculando resultados" in frontend
     assert "6 testes aprovados" not in frontend
 
 

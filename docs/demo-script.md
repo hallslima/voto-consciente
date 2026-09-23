@@ -2,7 +2,7 @@
 
 ## 1. Preparação antes da apresentação — 5 minutos
 
-- Usar a branch `feat/mvp-finalizacao` e confirmar `git status --short`.
+- Usar a branch `main` atualizada e confirmar `git status --short`.
 - Fechar aplicações que exibam notificações e conectar o computador à energia.
 - Confirmar que Python, dependências e `node_modules` estão disponíveis.
 - Executar `python -m pytest -q` e `cmd /c npm run build`.
