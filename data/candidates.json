@@ -1,0 +1,172 @@
+[
+  {
+    "id": "guilherme_fonseca",
+    "name": "Guilherme Fonseca",
+    "party": "PSTU",
+    "number": "16",
+    "registration_status": "Deferido",
+    "photo_url": "/assets/candidates/guilherme-fonseca-16.jpg",
+    "profile_url": "https://divulgacandcontas.tse.jus.br/divulga/#/home",
+    "official_data_url": "https://divulgacandcontas.tse.jus.br/divulga/#/home",
+    "local_plan_url": "/documents/government-plans/guilherme-fonseca-16.pdf",
+    "plan_document": "guilherme-fonseca-16.pdf",
+    "social_links": [],
+    "positions": {
+      "q1_saude": {"primary_option": "A", "compatibility": {"A": 1, "B": 0.5, "C": 0}, "evidence_level": 3, "summary": "Defende o fim da gestão privada por OSs, fundações e PPPs e a gestão estatal direta do SUS.", "source": "Guilherme Fonseca (PSTU) - Número 16.pdf", "page": "Seção Saúde Pública"},
+      "q2_educacao": {"primary_option": "C", "compatibility": {"A": 0, "B": 0, "C": 1}, "evidence_level": 3, "summary": "Rejeita a militarização escolar e defende gestão democrática e participação da comunidade.", "source": "Guilherme Fonseca (PSTU) - Número 16.pdf", "page": "Seção Educação"},
+      "q3_seguranca": {"primary_option": "C", "compatibility": {"A": 0, "B": 0, "C": 1, "D": 0.5}, "evidence_level": 3, "summary": "Propõe desmilitarização e unificação das polícias em instituição civil, com eleição de comandantes.", "source": "Guilherme Fonseca (PSTU) - Número 16.pdf", "page": "Seção Segurança Pública"},
+      "q4_transporte": {"primary_option": "A", "compatibility": {"A": 1, "B": 0.5, "C": 0}, "evidence_level": 3, "summary": "Propõe Tarifa Zero financiada por taxação de grandes empresas e estatização do transporte.", "source": "Guilherme Fonseca (PSTU) - Número 16.pdf", "page": "Seção Mobilidade e Transporte"},
+      "q5_saneamento": {"primary_option": "A", "compatibility": {"A": 1, "B": 0, "C": 0.5}, "evidence_level": 3, "summary": "Defende obras de saneamento executadas diretamente por empresa pública.", "source": "Guilherme Fonseca (PSTU) - Número 16.pdf", "page": "Seção Infraestrutura e Saneamento"},
+      "q6_emprego": {"primary_option": "A", "compatibility": {"A": 1, "B": 0, "C": 0}, "evidence_level": 3, "summary": "Defende piso salarial estadual, redução de jornada e incorporação de terceirizados.", "source": "Guilherme Fonseca (PSTU) - Número 16.pdf", "page": "Seção Emprego e Renda"}
+    }
+  },
+  {
+    "id": "ivan_moraes",
+    "name": "Ivan Moraes",
+    "party": "PSOL",
+    "number": "50",
+    "registration_status": "Deferido",
+    "photo_url": "/assets/candidates/ivan-moraes-50.jpg",
+    "profile_url": "https://divulgacandcontas.tse.jus.br/divulga/#/home",
+    "official_data_url": "https://divulgacandcontas.tse.jus.br/divulga/#/home",
+    "local_plan_url": "/documents/government-plans/ivan-moraes-50.pdf",
+    "plan_document": "ivan-moraes-50.pdf",
+    "social_links": [{"label": "Instagram", "url": "https://www.instagram.com/ivanmoraespe/"}],
+    "positions": {
+      "q1_saude": {"primary_option": "B", "compatibility": {"A": 0.5, "B": 1, "C": 0.5}, "evidence_level": 3, "summary": "Propõe auditoria de contratos com OSs, divulgação de metas, gastos e indicadores.", "source": "Ivan Moraes (PSOL) - Número 50.pdf", "page": "Seção Saúde e Políticas de Drogas"},
+      "q2_educacao": {"primary_option": "C", "compatibility": {"A": 0, "B": 0, "C": 1}, "evidence_level": 3, "summary": "Propõe gestão democrática com critérios técnicos, consulta à comunidade e fortalecimento de conselhos e grêmios.", "source": "Ivan Moraes (PSOL) - Número 50.pdf", "page": "Seção Educação"},
+      "q3_seguranca": {"primary_option": "B", "compatibility": {"A": 0.5, "B": 1, "C": 0, "D": 0}, "evidence_level": 3, "summary": "Defende câmeras corporais, investigação de homicídios, gestão por dados e combate ao racismo institucional.", "source": "Ivan Moraes (PSOL) - Número 50.pdf", "page": "Seção Segurança"},
+      "q4_transporte": {"primary_option": "A", "compatibility": {"A": 1, "B": 0.5, "C": 0}, "evidence_level": 3, "summary": "Propõe Tarifa Zero e criação de fundo estadual para financiar o transporte.", "source": "Ivan Moraes (PSOL) - Número 50.pdf", "page": "Seção Mobilidade"},
+      "q6_emprego": {"primary_option": "C", "compatibility": {"A": 0, "B": 0, "C": 1}, "evidence_level": 3, "summary": "Propõe fundo de economia popular e solidária, compras públicas e remuneração de catadores.", "source": "Ivan Moraes (PSOL) - Número 50.pdf", "page": "Seção Emprego e Renda"},
+      "q7_assistencia": {"primary_option": "A", "compatibility": {"A": 1, "B": 0.5, "C": 0}, "evidence_level": 3, "summary": "Propõe renda básica estadual progressiva, fortalecimento do SUAS e cozinhas comunitárias.", "source": "Ivan Moraes (PSOL) - Número 50.pdf", "page": "Seção Assistência Social"}
+    }
+  },
+  {
+    "id": "joao_campos",
+    "name": "João Campos",
+    "party": "PSB",
+    "number": "40",
+    "registration_status": "Deferido",
+    "photo_url": "/assets/candidates/joao-campos-40.jpg",
+    "profile_url": "https://divulgacandcontas.tse.jus.br/divulga/#/home",
+    "official_data_url": "https://divulgacandcontas.tse.jus.br/divulga/#/home",
+    "local_plan_url": "/documents/government-plans/joao-campos-40.pdf",
+    "plan_document": "joao-campos-40.pdf",
+    "social_links": [{"label": "Instagram", "url": "https://www.instagram.com/joaocampos/"}],
+    "positions": {
+      "q1_saude": {"primary_option": "C", "compatibility": {"A": 0, "B": 0.5, "C": 1}, "evidence_level": 3, "summary": "Propõe contratos por desempenho, telessaúde e ampliação da estrutura hospitalar.", "source": "João Campos (PSB) - Número 40.pdf", "page": "Seção Saúde"},
+      "q2_educacao": {"primary_option": "B", "compatibility": {"A": 0, "B": 1, "C": 0}, "evidence_level": 3, "summary": "Propõe universalização do ensino médio integral e expansão da educação técnica e digital.", "source": "João Campos (PSB) - Número 40.pdf", "page": "Seção Educação"},
+      "q3_seguranca": {"primary_option": "A", "compatibility": {"A": 1, "B": 0.5, "C": 0, "D": 0}, "evidence_level": 3, "summary": "Propõe gestão por metas territoriais, Pacto Anti-Facção e expansão de unidades do Compaz.", "source": "João Campos (PSB) - Número 40.pdf", "page": "Seção Segurança"},
+      "q4_transporte": {"primary_option": "B", "compatibility": {"A": 0.5, "B": 1, "C": 0}, "evidence_level": 3, "summary": "Apresenta medidas de integração do transporte e benefícios direcionados a motociclistas e entregadores.", "source": "João Campos (PSB) - Número 40.pdf", "page": "Seção Mobilidade"},
+      "q5_saneamento": {"primary_option": "C", "compatibility": {"A": 0.5, "B": 0, "C": 1}, "evidence_level": 3, "summary": "Propõe isenção da tarifa mínima em áreas submetidas a rodízio e cobrança pelo consumo.", "source": "João Campos (PSB) - Número 40.pdf", "page": "Seção Infraestrutura"},
+      "q6_emprego": {"primary_option": "B", "compatibility": {"A": 0, "B": 1, "C": 0}, "evidence_level": 3, "summary": "Propõe políticas de qualificação, incentivos econômicos e apoio a cadeias produtivas.", "source": "João Campos (PSB) - Número 40.pdf", "page": "Seção Emprego e Renda"},
+      "q7_assistencia": {"primary_option": "A", "compatibility": {"A": 1, "B": 0.5, "C": 0}, "evidence_level": 3, "summary": "Propõe reajuste do Chapéu de Palha, centros de segurança alimentar e moradia assistida.", "source": "João Campos (PSB) - Número 40.pdf", "page": "Seção Assistência Social"}
+    }
+  },
+  {
+    "id": "jeremias",
+    "name": "Professor Jeremias do Banco",
+    "party": "Democrata",
+    "number": "35",
+    "registration_status": "Indeferido",
+    "photo_url": "/assets/candidates/professor-jeremias-35.jpg",
+    "profile_url": "https://divulgacandcontas.tse.jus.br/divulga/#/home",
+    "official_data_url": "https://divulgacandcontas.tse.jus.br/divulga/#/home",
+    "local_plan_url": "/documents/government-plans/professor-jeremias-35.pdf",
+    "plan_document": "professor-jeremias-35.pdf",
+    "social_links": [],
+    "positions": {
+      "q1_saude": {"primary_option": "C", "compatibility": {"A": 0, "B": 0.5, "C": 1}, "evidence_level": 3, "summary": "Propõe novas unidades hospitalares, prontuário eletrônico e telemedicina.", "source": "Professor Jeremias do Banco (Democrata) - Número 35.pdf", "page": "Seção Saúde"},
+      "q2_educacao": {"primary_option": "A", "compatibility": {"A": 1, "B": 0, "C": 0}, "evidence_level": 3, "summary": "Propõe ampliação e construção de escolas militares.", "source": "Professor Jeremias do Banco (Democrata) - Número 35.pdf", "page": "Seção Educação"},
+      "q3_seguranca": {"primary_option": "A", "compatibility": {"A": 1, "B": 0.5, "C": 0, "D": 0}, "evidence_level": 3, "summary": "Propõe concursos, integração tecnológica e redução do estoque de inquéritos.", "source": "Professor Jeremias do Banco (Democrata) - Número 35.pdf", "page": "Seção Segurança"},
+      "q6_emprego": {"primary_option": "B", "compatibility": {"A": 0, "B": 1, "C": 0}, "evidence_level": 3, "summary": "Propõe simplificação para negócios, empreendedorismo e estudo para criação de banco estadual.", "source": "Professor Jeremias do Banco (Democrata) - Número 35.pdf", "page": "Seção Emprego e Renda"},
+      "q7_assistencia": {"primary_option": "B", "compatibility": {"A": 0.5, "B": 1, "C": 0}, "evidence_level": 2, "summary": "O plano apresenta apoio a famílias e ações itinerantes, mas a classificação nesta alternativa precisa de revisão do grupo.", "source": "Professor Jeremias do Banco (Democrata) - Número 35.pdf", "page": "Seção Assistência Social"}
+    }
+  },
+  {
+    "id": "camila",
+    "name": "Professora Camila",
+    "party": "UP",
+    "number": "80",
+    "registration_status": "Deferido",
+    "photo_url": "/assets/candidates/professora-camila-80.jpg",
+    "profile_url": "https://divulgacandcontas.tse.jus.br/divulga/#/home",
+    "official_data_url": "https://divulgacandcontas.tse.jus.br/divulga/#/home",
+    "local_plan_url": "/documents/government-plans/professora-camila-80.pdf",
+    "plan_document": "professora-camila-80.pdf",
+    "social_links": [],
+    "positions": {
+      "q1_saude": {"primary_option": "A", "compatibility": {"A": 1, "B": 0.5, "C": 0}, "evidence_level": 3, "summary": "Defende encerramento de repasses a OSs e gestão direta dos serviços públicos de saúde.", "source": "Professora Camila (UP) - Número 80.pdf", "page": "Seção Saúde"},
+      "q2_educacao": {"primary_option": "C", "compatibility": {"A": 0, "B": 0, "C": 1}, "evidence_level": 2, "summary": "O plano rejeita a militarização e defende participação popular; o enquadramento na alternativa C precisa de revisão.", "source": "Professora Camila (UP) - Número 80.pdf", "page": "Seção Educação"},
+      "q3_seguranca": {"primary_option": "D", "compatibility": {"A": 0, "B": 0, "C": 0.5, "D": 1}, "evidence_level": 3, "summary": "Defende o fim da Polícia Militar e uma reorganização popular da segurança.", "source": "Professora Camila (UP) - Número 80.pdf", "page": "Seção Segurança"},
+      "q4_transporte": {"primary_option": "A", "compatibility": {"A": 1, "B": 0.5, "C": 0}, "evidence_level": 3, "summary": "Defende transporte estatizado e reversão de privatizações e concessões.", "source": "Professora Camila (UP) - Número 80.pdf", "page": "Seção Mobilidade"},
+      "q5_saneamento": {"primary_option": "A", "compatibility": {"A": 1, "B": 0, "C": 0.5}, "evidence_level": 3, "summary": "Defende a Compesa sob gestão estatal e o cancelamento de concessões.", "source": "Professora Camila (UP) - Número 80.pdf", "page": "Seção Infraestrutura"},
+      "q6_emprego": {"primary_option": "A", "compatibility": {"A": 1, "B": 0, "C": 0}, "evidence_level": 3, "summary": "Defende fim da escala 6x1, redução da jornada e aumento do salário mínimo.", "source": "Professora Camila (UP) - Número 80.pdf", "page": "Seção Emprego e Renda"},
+      "q7_assistencia": {"primary_option": "C", "compatibility": {"A": 0, "B": 0, "C": 1}, "evidence_level": 3, "summary": "Defende participação deliberativa de conselhos populares na definição de recursos públicos.", "source": "Professora Camila (UP) - Número 80.pdf", "page": "Seção Assistência Social"}
+    }
+  },
+  {
+    "id": "raquel_lyra",
+    "name": "Raquel Lyra",
+    "party": "PSD",
+    "number": "55",
+    "registration_status": "Deferido",
+    "photo_url": "/assets/candidates/raquel-lyra-55.jpg",
+    "profile_url": "https://divulgacandcontas.tse.jus.br/divulga/#/home",
+    "official_data_url": "https://divulgacandcontas.tse.jus.br/divulga/#/home",
+    "local_plan_url": "/documents/government-plans/raquel-lyra-55.pdf",
+    "plan_document": "raquel-lyra-55.pdf",
+    "social_links": [{"label": "Instagram", "url": "https://www.instagram.com/raquellyraoficial/"}],
+    "positions": {
+      "q1_saude": {"primary_option": "C", "compatibility": {"A": 0, "B": 0.5, "C": 1}, "evidence_level": 3, "summary": "Propõe parcerias, contratos por desempenho e ampliação da infraestrutura de saúde.", "source": "Raquel Lyra (PSD) - Número 55.pdf", "page": "p. 81"},
+      "q2_educacao": {"primary_option": "B", "compatibility": {"A": 0, "B": 1, "C": 0}, "evidence_level": 3, "summary": "Propõe expansão de escolas técnicas, ensino integral e melhoria da infraestrutura escolar.", "source": "Raquel Lyra (PSD) - Número 55.pdf", "page": "Seção Educação"},
+      "q3_seguranca": {"primary_option": "A", "compatibility": {"A": 1, "B": 0.5, "C": 0, "D": 0}, "evidence_level": 3, "summary": "Propõe fortalecimento das corporações, batalhões especializados, inteligência e videomonitoramento.", "source": "Raquel Lyra (PSD) - Número 55.pdf", "page": "p. 39"},
+      "q4_transporte": {"primary_option": "B", "compatibility": {"A": 0.5, "B": 1, "C": 0}, "evidence_level": 3, "summary": "Propõe integração tarifária e aperfeiçoamento do sistema metropolitano.", "source": "Raquel Lyra (PSD) - Número 55.pdf", "page": "p. 56"},
+      "q5_saneamento": {"primary_option": "B", "compatibility": {"A": 0, "B": 1, "C": 0}, "evidence_level": 3, "summary": "Defende concessões reguladas e atração de investimento privado para metas de universalização.", "source": "Raquel Lyra (PSD) - Número 55.pdf", "page": "Seção Saneamento"},
+      "q6_emprego": {"primary_option": "B", "compatibility": {"A": 0, "B": 1, "C": 0}, "evidence_level": 3, "summary": "Propõe qualificação, apoio a arranjos produtivos, simplificação e políticas de crédito.", "source": "Raquel Lyra (PSD) - Número 55.pdf", "page": "pp. 60-65"},
+      "q7_assistencia": {"primary_option": "A", "compatibility": {"A": 1, "B": 0.5, "C": 0}, "evidence_level": 3, "summary": "Apresenta transferência de renda e ações de segurança alimentar.", "source": "Raquel Lyra (PSD) - Número 55.pdf", "page": "Seção Assistência Social"}
+    }
+  },
+  {
+    "id": "renan",
+    "name": "Renan",
+    "party": "Missão",
+    "number": "14",
+    "registration_status": "Deferido",
+    "photo_url": "/assets/candidates/renan-14.jpg",
+    "profile_url": "https://divulgacandcontas.tse.jus.br/divulga/#/home",
+    "official_data_url": "https://divulgacandcontas.tse.jus.br/divulga/#/home",
+    "local_plan_url": "/documents/government-plans/renan-14.pdf",
+    "plan_document": "renan-14.pdf",
+    "social_links": [],
+    "positions": {
+      "q1_saude": {"primary_option": "C", "compatibility": {"A": 0, "B": 0.5, "C": 1}, "evidence_level": 3, "summary": "Propõe PPPs em telerradiologia, integração digital e expansão regional dos serviços.", "source": "Renan (Missão) - Número 14.pdf", "page": "Seção 10, Saúde Pública"},
+      "q2_educacao": {"primary_option": "C", "compatibility": {"A": 0, "B": 0, "C": 1}, "evidence_level": 3, "summary": "Propõe escolas abertas à comunidade e gestão comunitária, além de mediação por agentes capacitados.", "source": "Renan (Missão) - Número 14.pdf", "page": "Educação, Pilar 1"},
+      "q3_seguranca": {"primary_option": "A", "compatibility": {"A": 1, "B": 0.5, "C": 0, "D": 0}, "evidence_level": 3, "summary": "Propõe recomposição do efetivo, integração de inteligência, reconhecimento facial e presença territorial.", "source": "Renan (Missão) - Número 14.pdf", "page": "Seção Segurança Pública"},
+      "q4_transporte": {"primary_option": "C", "compatibility": {"A": 0, "B": 0, "C": 1}, "evidence_level": 3, "summary": "Propõe regime de autorização para novas empresas e aplicativos no transporte intermunicipal.", "source": "Renan (Missão) - Número 14.pdf", "page": "Infraestrutura e Mobilidade"},
+      "q5_saneamento": {"primary_option": "C", "compatibility": {"A": 0.5, "B": 0, "C": 1}, "evidence_level": 2, "summary": "Propõe regulação da Compesa, redução de perdas e medidas contra o rodízio; o enquadramento na alternativa C precisa de revisão.", "source": "Renan (Missão) - Número 14.pdf", "page": "Saneamento Básico e Meio Ambiente"},
+      "q6_emprego": {"primary_option": "B", "compatibility": {"A": 0, "B": 1, "C": 0}, "evidence_level": 3, "summary": "Propõe qualificação, aprendizagem dual, simplificação e estímulo ao empreendedorismo.", "source": "Renan (Missão) - Número 14.pdf", "page": "Seções Educação e Desenvolvimento"},
+      "q7_assistencia": {"primary_option": "B", "compatibility": {"A": 0.5, "B": 1, "C": 0}, "evidence_level": 3, "summary": "Propõe integração entre CRAS, formação profissional e inserção no mercado formal.", "source": "Renan (Missão) - Número 14.pdf", "page": "Seção Assistência Social"}
+    }
+  },
+  {
+    "id": "victor_assis",
+    "name": "Victor Assis",
+    "party": "PCO",
+    "number": "29",
+    "registration_status": "Deferido",
+    "photo_url": "/assets/candidates/victor-assis-29.jpg",
+    "profile_url": "https://divulgacandcontas.tse.jus.br/divulga/#/home",
+    "official_data_url": "https://divulgacandcontas.tse.jus.br/divulga/#/home",
+    "local_plan_url": "/documents/government-plans/victor-assis-29.pdf",
+    "plan_document": "victor-assis-29.pdf",
+    "social_links": [],
+    "positions": {
+      "q2_educacao": {"primary_option": "C", "compatibility": {"A": 0, "B": 0, "C": 1}, "evidence_level": 2, "summary": "Defende gestão tripartite por estudantes, professores e funcionários; o enquadramento na alternativa C precisa de revisão.", "source": "Victor Assis (PCO) - Número 29.pdf", "page": "Seção Educação"},
+      "q3_seguranca": {"primary_option": "D", "compatibility": {"A": 0, "B": 0, "C": 0.5, "D": 1}, "evidence_level": 2, "summary": "Propõe dissolução da Polícia Militar e comitês de autodefesa dos trabalhadores.", "source": "Victor Assis (PCO) - Número 29.pdf", "page": "Seção Segurança Pública"},
+      "q4_transporte": {"primary_option": "B", "compatibility": {"A": 0.5, "B": 1, "C": 0}, "evidence_level": 2, "summary": "Propõe passe livre para desempregados e trabalhadores informais.", "source": "Victor Assis (PCO) - Número 29.pdf", "page": "Seção Mobilidade"},
+      "q6_emprego": {"primary_option": "A", "compatibility": {"A": 1, "B": 0, "C": 0}, "evidence_level": 3, "summary": "Defende jornada de 35 horas, reajuste salarial e salário mínimo com valor definido no plano.", "source": "Victor Assis (PCO) - Número 29.pdf", "page": "Seção Emprego e Renda"},
+      "q7_assistencia": {"primary_option": "A", "compatibility": {"A": 1, "B": 0.5, "C": 0}, "evidence_level": 3, "summary": "Defende ampliação do valor de benefícios sociais e ações voltadas à produção de alimentos.", "source": "Victor Assis (PCO) - Número 29.pdf", "page": "Seção Assistência Social"}
+    }
+  }
+]

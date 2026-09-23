@@ -1,0 +1,73 @@
+[
+  {
+    "id": "q1_saude",
+    "theme": "Saúde pública",
+    "text": "Qual modelo de gestão deve receber prioridade nos hospitais públicos e nas unidades estaduais de saúde de Pernambuco?",
+    "options": [
+      {"id": "A", "text": "Priorizar a administração direta pelo Estado, substituindo contratos com empresas e Organizações Sociais."},
+      {"id": "B", "text": "Manter contratos com Organizações Sociais, com fiscalização, auditoria e divulgação dos custos."},
+      {"id": "C", "text": "Ampliar contratos e parcerias com empresas, cooperativas e outras entidades para a prestação de serviços de saúde."}
+    ]
+  },
+  {
+    "id": "q2_educacao",
+    "theme": "Educação",
+    "text": "Qual modelo deve receber maior prioridade na rede estadual de ensino?",
+    "options": [
+      {"id": "A", "text": "Expandir escolas militares e projetos educacionais realizados com a participação das forças de segurança."},
+      {"id": "B", "text": "Expandir o ensino médio em tempo integral e as escolas técnicas estaduais."},
+      {"id": "C", "text": "Ampliar a participação da comunidade escolar na gestão e abrir as escolas para atividades comunitárias."}
+    ]
+  },
+  {
+    "id": "q3_seguranca",
+    "theme": "Segurança pública",
+    "text": "Qual modelo de organização das forças de segurança pública estaduais mais se aproxima da sua prioridade?",
+    "options": [
+      {"id": "A", "text": "Manter a Polícia Militar e ampliar efetivos, unidades especializadas, inteligência e policiamento ostensivo."},
+      {"id": "B", "text": "Manter as corporações atuais, priorizando câmeras corporais, investigação de homicídios e ações contra o racismo institucional."},
+      {"id": "C", "text": "Substituir a Polícia Militar por uma instituição de caráter civil, com escolha dos seus comandantes."},
+      {"id": "D", "text": "Substituir o atual modelo de forças policiais por comitês de autodefesa formados por trabalhadores."}
+    ]
+  },
+  {
+    "id": "q4_transporte",
+    "theme": "Mobilidade e transporte",
+    "text": "Qual modelo de organização do transporte público deve receber maior prioridade?",
+    "options": [
+      {"id": "A", "text": "Implantar a Tarifa Zero, com financiamento por fundos públicos ou tributação de grandes empresas."},
+      {"id": "B", "text": "Manter a cobrança de tarifa integrada, com gratuidades ou isenções para públicos específicos."},
+      {"id": "C", "text": "Ampliar a concorrência, permitindo que novas empresas e aplicativos operem mediante autorização do Estado."}
+    ]
+  },
+  {
+    "id": "q5_saneamento",
+    "theme": "Saneamento",
+    "text": "Qual modelo deve ser adotado na prestação dos serviços de água e esgoto atualmente vinculados à Compesa?",
+    "options": [
+      {"id": "A", "text": "Manter os serviços sob controle público, sem concessão a empresas privadas."},
+      {"id": "B", "text": "Realizar concessões dos serviços para empresas privadas, com metas de ampliação do saneamento."},
+      {"id": "C", "text": "Manter a empresa pública e adotar proteção tarifária para áreas submetidas a rodízio de água."}
+    ]
+  },
+  {
+    "id": "q6_emprego",
+    "theme": "Emprego e renda",
+    "text": "Qual estratégia deve receber maior prioridade do Governo de Pernambuco para apoiar trabalhadores e estimular a geração de renda?",
+    "options": [
+      {"id": "A", "text": "Apoiar mudanças nas regras trabalhistas, como redução da jornada, fim da escala 6x1 e reajustes do salário mínimo."},
+      {"id": "B", "text": "Investir em qualificação profissional, crédito para pequenos negócios e simplificação da abertura de empresas."},
+      {"id": "C", "text": "Apoiar cooperativas, catadores e empreendimentos da economia popular e solidária por meio de programas e compras públicas."}
+    ]
+  },
+  {
+    "id": "q7_assistencia",
+    "theme": "Assistência social e combate à fome",
+    "text": "Qual abordagem deve receber maior prioridade nas políticas estaduais de combate à fome e assistência social?",
+    "options": [
+      {"id": "A", "text": "Ampliar programas de transferência de renda, restaurantes populares e cozinhas comunitárias."},
+      {"id": "B", "text": "Integrar os serviços dos CRAS a programas de formação profissional e acesso ao mercado de trabalho."},
+      {"id": "C", "text": "Ampliar a participação de conselhos populares e movimentos sociais nas decisões sobre os recursos da assistência social."}
+    ]
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "question_id": "",
+  "theme": "",
+  "generation_mode": "general",
+  "source_evidence_ids": [],
+  "alternatives": [],
+  "bias_review": {
+    "leading_language": false,
+    "double_barreled": false,
+    "moral_framing": false,
+    "candidate_reference": false
+  },
+  "review_status": "approved",
+  "reviewer": "",
+  "review_notes": ""
+}

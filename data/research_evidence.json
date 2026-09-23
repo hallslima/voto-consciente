@@ -1,0 +1,23 @@
+{
+  "sample_size": 135,
+  "sampling_method": "Amostra por conveniência, divulgada na rede de contatos do grupo",
+  "geographic_focus": "Pernambuco",
+  "results": [
+    {"indicator": "Conhecem poucos ou apenas alguns dos oito candidatos", "percentage": 80.7},
+    {"indicator": "Conseguem citar somente dois ou três candidatos", "percentage": 77.0},
+    {"indicator": "Não conhecem bem as propostas de vários candidatos", "percentage": 97.8},
+    {"indicator": "Consideram difícil ou muito difícil encontrar informações confiáveis", "percentage": 29.7},
+    {"indicator": "Apontaram dificuldade para encontrar informações confiáveis", "percentage": 27.4},
+    {"indicator": "Consideram que as informações estão espalhadas", "percentage": 19.3},
+    {"indicator": "Não conhecem suficientemente as propostas", "percentage": 15.6},
+    {"indicator": "Consideram os planos de governo muito extensos", "percentage": 7.4}
+  ],
+  "limitations": [
+    "A amostra não é probabilística",
+    "Os participantes pertencem principalmente à rede de contatos do grupo",
+    "Os resultados não representam todo o eleitorado pernambucano",
+    "Os percentuais devem ser interpretados apenas como evidência descritiva do público consultado"
+  ],
+  "form_url": "https://docs.google.com/forms/d/e/1FAIpQLScE5-c1criQdYijH5G_T7GbGtj1FrTIjf6AJxbRN0lHXiAWog/viewform",
+  "spreadsheet_url": "https://docs.google.com/spreadsheets/d/1eUJrodFFTLs0JsUA9S6dGQv22PJfoSBntN1gbai0g5A/edit?gid=1768957486#gid=1768957486"
+}

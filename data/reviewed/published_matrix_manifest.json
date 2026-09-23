@@ -1,0 +1,14 @@
+{
+  "matrix_version": "pending-initial-traceability",
+  "published_at": null,
+  "reviewers": [],
+  "reviewed_files": [],
+  "file_sha256": {},
+  "questions_generated_from_evidence": [],
+  "limitations": [
+    "Os registros reais que originaram a matriz atual ainda não possuem trilha de revisão documentada neste repositório.",
+    "Os arquivos example.generated.json e example.reviewed.json são fictícios e estão excluídos da publicação.",
+    "Este manifesto não autoriza promoção ou publicação até a revisão humana real ser registrada."
+  ],
+  "approval_status": "pending"
+}
