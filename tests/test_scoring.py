@@ -51,6 +51,36 @@ def test_matrix_uses_only_allowed_compatibility_values():
     assert validate_matrix(load("questions.json"), load("candidates.json")) == []
 
 
+def test_api_theme_scores_preserve_total_partial_zero_and_missing_evidence():
+    questions = [
+        {"id": "total", "theme": "Total"},
+        {"id": "partial", "theme": "Parcial"},
+        {"id": "different", "theme": "Diferente"},
+        {"id": "missing", "theme": "Sem evidência"},
+    ]
+    candidate = {
+        "id": "candidate",
+        "name": "Candidatura",
+        "party": "PARTIDO",
+        "positions": {
+            "total": {"primary_option": "A", "compatibility": {"A": 1}},
+            "partial": {"primary_option": "A", "compatibility": {"A": 0.5}},
+            "different": {"primary_option": "B", "compatibility": {"A": 0}},
+        },
+    }
+    answers = {question["id"]: "A" for question in questions}
+    result = calculate_results(questions, [candidate], answers, {key: 1 for key in answers})[0]
+    details = {detail["question_id"]: detail for detail in result.details}
+
+    assert [details[key]["theme_score"] for key in ("total", "partial", "different")] == [100, 50, 0]
+    assert details["missing"]["similarity"] is None
+    assert "theme_score" not in details["missing"]
+    assert result.numerator == 1.5
+    assert result.denominator == 3
+    assert result.score == 50
+    assert result.coverage == 75
+
+
 def test_weighted_formula_and_memory():
     questions = load("questions.json")
     candidates = load("candidates.json")
