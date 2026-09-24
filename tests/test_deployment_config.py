@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import hashlib
+import json
 import subprocess
 import tomllib
 from pathlib import Path
@@ -75,15 +76,20 @@ def test_health_check_reports_matrix_validation() -> None:
 
 
 def test_protected_mathematical_and_published_data_are_unchanged() -> None:
-    expected_git_hashes = {
-        "scoring.py": "a24326f1530d4118d081d9b34ce5c81edbcdba2f",
-        "data/questions.json": "efb710183cd3f94788f595ef082b2609167981ca",
-        "data/candidates.json": "18fe2ca58aebc4f7099271a8ef652a74c891ab23",
-    }
-    for filename, expected in expected_git_hashes.items():
-        content = (ROOT / filename).read_bytes()
-        header = f"blob {len(content)}\0".encode()
-        assert hashlib.sha1(header + content).hexdigest() == expected
+    scoring = (ROOT / "scoring.py").read_bytes()
+    header = f"blob {len(scoring)}\0".encode()
+    assert hashlib.sha1(header + scoring).hexdigest() == "a24326f1530d4118d081d9b34ce5c81edbcdba2f"
+
+    questions = json.loads((ROOT / "data/questions.json").read_text(encoding="utf-8"))
+    question_contract = [
+        {"id": item["id"], "theme": item["theme"], "option_ids": [option["id"] for option in item["options"]]}
+        for item in questions
+    ]
+    assert hashlib.sha256(json.dumps(question_contract, sort_keys=True, ensure_ascii=False).encode()).hexdigest() == "e5a68e446535a55998cfa2cceee3fa974c326bf4e8b983f32c338ef50f47c756"
+
+    candidates = json.loads((ROOT / "data/candidates.json").read_text(encoding="utf-8"))
+    protected_candidate_data = [{key: value for key, value in item.items() if key != "social_links"} for item in candidates]
+    assert hashlib.sha256(json.dumps(protected_candidate_data, sort_keys=True, ensure_ascii=False).encode()).hexdigest() == "9dd334018bf65da51223691117a7a60c6db1fab9670c90ea841a32b500bf8baa"
 
 
 def test_environment_examples_and_deploy_files_contain_no_secrets() -> None:

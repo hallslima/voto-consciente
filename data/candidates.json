@@ -31,7 +31,12 @@
     "official_data_url": "https://divulgacandcontas.tse.jus.br/divulga/#/home",
     "local_plan_url": "/documents/government-plans/ivan-moraes-50.pdf",
     "plan_document": "ivan-moraes-50.pdf",
-    "social_links": [{"label": "Instagram", "url": "https://www.instagram.com/ivanmoraespe/"}],
+    "social_links": [
+      {"platform": "tiktok", "label": "TikTok", "url": "https://www.tiktok.com/@ivanmoraespe"},
+      {"platform": "youtube", "label": "YouTube", "url": "https://www.youtube.com/ivanmoraesfilho"},
+      {"platform": "instagram", "label": "Instagram", "url": "https://www.instagram.com/ivanmoraespe/"},
+      {"platform": "facebook", "label": "Facebook", "url": "https://www.facebook.com/ivanmoraesoficial"}
+    ],
     "positions": {
       "q1_saude": {"primary_option": "B", "compatibility": {"A": 0.5, "B": 1, "C": 0.5}, "evidence_level": 3, "summary": "Propõe auditoria de contratos com OSs, divulgação de metas, gastos e indicadores.", "source": "Ivan Moraes (PSOL) - Número 50.pdf", "page": "Seção Saúde e Políticas de Drogas"},
       "q2_educacao": {"primary_option": "C", "compatibility": {"A": 0, "B": 0, "C": 1}, "evidence_level": 3, "summary": "Propõe gestão democrática com critérios técnicos, consulta à comunidade e fortalecimento de conselhos e grêmios.", "source": "Ivan Moraes (PSOL) - Número 50.pdf", "page": "Seção Educação"},
@@ -52,7 +57,22 @@
     "official_data_url": "https://divulgacandcontas.tse.jus.br/divulga/#/home",
     "local_plan_url": "/documents/government-plans/joao-campos-40.pdf",
     "plan_document": "joao-campos-40.pdf",
-    "social_links": [{"label": "Instagram", "url": "https://www.instagram.com/joaocampos/"}],
+    "social_links": [
+      {"platform": "website", "label": "Maior Salário do Brasil", "url": "https://www.maiorsalariodobrasil.com.br/"},
+      {"platform": "kwai", "label": "Kwai", "url": "https://www.kwai.com/@joaocamposoficial"},
+      {"platform": "website", "label": "Chega Junto PE", "url": "https://chegajuntope.com.br/"},
+      {"platform": "website", "label": "Fura Teto", "url": "https://www.furateto.com.br/"},
+      {"platform": "linkedin", "label": "LinkedIn", "url": "https://www.linkedin.com/in/jo%C3%A3o-campos-2477802a4/"},
+      {"platform": "threads", "label": "Threads", "url": "https://www.threads.com/@joaocampos"},
+      {"platform": "tiktok", "label": "TikTok", "url": "https://www.tiktok.com/@joaocampos"},
+      {"platform": "instagram", "label": "Instagram", "url": "https://www.instagram.com/joaocampos"},
+      {"platform": "website", "label": "Site oficial", "url": "https://www.joaocampos40.com.br/"},
+      {"platform": "youtube", "label": "YouTube", "url": "https://www.youtube.com/@joaocampos"},
+      {"platform": "linkedin", "label": "LinkedIn alternativo", "url": "https://www.linkedin.com/in/joaohcampos/"},
+      {"platform": "website", "label": "A Empresa da Família", "url": "http://www.aempresadafamilia.com.br/"},
+      {"platform": "facebook", "label": "Facebook", "url": "https://www.facebook.com/joaocampospsb"},
+      {"platform": "x", "label": "X", "url": "https://x.com/joaocampos"}
+    ],
     "positions": {
       "q1_saude": {"primary_option": "C", "compatibility": {"A": 0, "B": 0.5, "C": 1}, "evidence_level": 3, "summary": "Propõe contratos por desempenho, telessaúde e ampliação da estrutura hospitalar.", "source": "João Campos (PSB) - Número 40.pdf", "page": "Seção Saúde"},
       "q2_educacao": {"primary_option": "B", "compatibility": {"A": 0, "B": 1, "C": 0}, "evidence_level": 3, "summary": "Propõe universalização do ensino médio integral e expansão da educação técnica e digital.", "source": "João Campos (PSB) - Número 40.pdf", "page": "Seção Educação"},
@@ -94,7 +114,7 @@
     "official_data_url": "https://divulgacandcontas.tse.jus.br/divulga/#/home",
     "local_plan_url": "/documents/government-plans/professora-camila-80.pdf",
     "plan_document": "professora-camila-80.pdf",
-    "social_links": [],
+    "social_links": [{"platform": "instagram", "label": "Instagram", "url": "https://www.instagram.com/camilafalcao.up/"}],
     "positions": {
       "q1_saude": {"primary_option": "A", "compatibility": {"A": 1, "B": 0.5, "C": 0}, "evidence_level": 3, "summary": "Defende encerramento de repasses a OSs e gestão direta dos serviços públicos de saúde.", "source": "Professora Camila (UP) - Número 80.pdf", "page": "Seção Saúde"},
       "q2_educacao": {"primary_option": "C", "compatibility": {"A": 0, "B": 0, "C": 1}, "evidence_level": 2, "summary": "O plano rejeita a militarização e defende participação popular; o enquadramento na alternativa C precisa de revisão.", "source": "Professora Camila (UP) - Número 80.pdf", "page": "Seção Educação"},
@@ -116,7 +136,17 @@
     "official_data_url": "https://divulgacandcontas.tse.jus.br/divulga/#/home",
     "local_plan_url": "/documents/government-plans/raquel-lyra-55.pdf",
     "plan_document": "raquel-lyra-55.pdf",
-    "social_links": [{"label": "Instagram", "url": "https://www.instagram.com/raquellyraoficial/"}],
+    "social_links": [
+      {"platform": "spotify", "label": "Spotify", "url": "https://open.spotify.com/show/1HPHQRX8UBDYGXIO0SEXVK?si=MOLQMN1LS96LPURVX2E6AG&u"},
+      {"platform": "instagram", "label": "Instagram", "url": "https://instagram.com/raquellyraoficial"},
+      {"platform": "youtube", "label": "YouTube", "url": "https://youtube.com/@raquellyraoficial"},
+      {"platform": "threads", "label": "Threads", "url": "https://threads.com/@raquellyraoficial"},
+      {"platform": "website", "label": "Site oficial", "url": "https://psdpe55.org.br/"},
+      {"platform": "x", "label": "X", "url": "https://x.com/raquellyra"},
+      {"platform": "kwai", "label": "Kwai", "url": "https://kwai.com/@raquellyraoficial"},
+      {"platform": "tiktok", "label": "TikTok", "url": "https://tiktok.com/@raquellyraoficial"},
+      {"platform": "facebook", "label": "Facebook", "url": "https://facebook.com/raquellyraoficial"}
+    ],
     "positions": {
       "q1_saude": {"primary_option": "C", "compatibility": {"A": 0, "B": 0.5, "C": 1}, "evidence_level": 3, "summary": "Propõe parcerias, contratos por desempenho e ampliação da infraestrutura de saúde.", "source": "Raquel Lyra (PSD) - Número 55.pdf", "page": "p. 81"},
       "q2_educacao": {"primary_option": "B", "compatibility": {"A": 0, "B": 1, "C": 0}, "evidence_level": 3, "summary": "Propõe expansão de escolas técnicas, ensino integral e melhoria da infraestrutura escolar.", "source": "Raquel Lyra (PSD) - Número 55.pdf", "page": "Seção Educação"},
@@ -138,7 +168,7 @@
     "official_data_url": "https://divulgacandcontas.tse.jus.br/divulga/#/home",
     "local_plan_url": "/documents/government-plans/renan-14.pdf",
     "plan_document": "renan-14.pdf",
-    "social_links": [],
+    "social_links": [{"platform": "instagram", "label": "Instagram", "url": "https://www.instagram.com/renanhallaispe/"}],
     "positions": {
       "q1_saude": {"primary_option": "C", "compatibility": {"A": 0, "B": 0.5, "C": 1}, "evidence_level": 3, "summary": "Propõe PPPs em telerradiologia, integração digital e expansão regional dos serviços.", "source": "Renan (Missão) - Número 14.pdf", "page": "Seção 10, Saúde Pública"},
       "q2_educacao": {"primary_option": "C", "compatibility": {"A": 0, "B": 0, "C": 1}, "evidence_level": 3, "summary": "Propõe escolas abertas à comunidade e gestão comunitária, além de mediação por agentes capacitados.", "source": "Renan (Missão) - Número 14.pdf", "page": "Educação, Pilar 1"},
@@ -160,7 +190,13 @@
     "official_data_url": "https://divulgacandcontas.tse.jus.br/divulga/#/home",
     "local_plan_url": "/documents/government-plans/victor-assis-29.pdf",
     "plan_document": "victor-assis-29.pdf",
-    "social_links": [],
+    "social_links": [
+      {"platform": "website", "label": "Site", "url": "https://candidatos.pco.org.br"},
+      {"platform": "x", "label": "X", "url": "https://x.com/VictorAssis_Rec"},
+      {"platform": "tiktok", "label": "TikTok", "url": "https://www.tiktok.com/@victorassisrecife"},
+      {"platform": "instagram", "label": "Instagram", "url": "https://www.instagram.com/victorassisrecife/"},
+      {"platform": "facebook", "label": "Facebook", "url": "https://www.facebook.com/VictorAssisRecife/"}
+    ],
     "positions": {
       "q2_educacao": {"primary_option": "C", "compatibility": {"A": 0, "B": 0, "C": 1}, "evidence_level": 2, "summary": "Defende gestão tripartite por estudantes, professores e funcionários; o enquadramento na alternativa C precisa de revisão.", "source": "Victor Assis (PCO) - Número 29.pdf", "page": "Seção Educação"},
       "q3_seguranca": {"primary_option": "D", "compatibility": {"A": 0, "B": 0, "C": 0.5, "D": 1}, "evidence_level": 2, "summary": "Propõe dissolução da Polícia Militar e comitês de autodefesa dos trabalhadores.", "source": "Victor Assis (PCO) - Número 29.pdf", "page": "Seção Segurança Pública"},
