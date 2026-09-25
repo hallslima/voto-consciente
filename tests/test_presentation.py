@@ -93,18 +93,13 @@ def test_presentation_data_matches_current_repository_scope():
     candidates = json.loads((ROOT / "data" / "candidates.json").read_text(encoding="utf-8"))
     questions = json.loads((ROOT / "data" / "questions.json").read_text(encoding="utf-8"))
     research = json.loads((ROOT / "data" / "research_evidence.json").read_text(encoding="utf-8"))
-    manifest = json.loads((ROOT / "data" / "generated" / "extraction_manifest.json").read_text(encoding="utf-8"))
-    eligible_ids = {candidate["id"] for candidate in candidates}
-    eligible_documents = [item for item in manifest["documents"] if item["candidate_id"] in eligible_ids]
     presentation_data = source("presentationData.js")
     expected = {
         "candidacies": len(candidates),
-        "officialPlans": len(eligible_documents),
-        "analyzedPages": sum(item["page_count"] for item in eligible_documents),
+        "officialPlans": len(candidates),
         "themes": len({question["theme"] for question in questions}),
         "publishedQuestions": len(questions),
         "researchParticipants": research["sample_size"],
-        "ocrDocuments": sum(any(method.startswith("ocr") for method in item["methods"]) for item in eligible_documents),
     }
     for key, value in expected.items():
         assert re.search(rf"{key}: {value},", presentation_data)
@@ -138,4 +133,5 @@ def test_presentation_avoids_prohibited_claims():
 
 
 def test_scoring_engine_hash_is_preserved():
-    assert hashlib.sha256((ROOT / "scoring.py").read_bytes()).hexdigest() == "8d40d85428646c8f80dce63ffc8d7e244f5600cab4df8d93247449280a04c81d"
+    normalized = (ROOT / "scoring.py").read_bytes().replace(b"\r\n", b"\n")
+    assert hashlib.sha256(normalized).hexdigest() == "8d40d85428646c8f80dce63ffc8d7e244f5600cab4df8d93247449280a04c81d"

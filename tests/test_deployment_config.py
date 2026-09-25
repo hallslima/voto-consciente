@@ -76,9 +76,8 @@ def test_health_check_reports_matrix_validation() -> None:
 
 
 def test_protected_mathematical_and_published_data_are_unchanged() -> None:
-    scoring = (ROOT / "scoring.py").read_bytes()
-    header = f"blob {len(scoring)}\0".encode()
-    assert hashlib.sha1(header + scoring).hexdigest() == "fd2bf422dbe4870d0fd18a40245f6a1aae250a5a"
+    scoring = (ROOT / "scoring.py").read_bytes().replace(b"\r\n", b"\n")
+    assert hashlib.sha256(scoring).hexdigest() == "8d40d85428646c8f80dce63ffc8d7e244f5600cab4df8d93247449280a04c81d"
 
     questions = json.loads((ROOT / "data/questions.json").read_text(encoding="utf-8"))
     question_contract = [
@@ -95,7 +94,6 @@ def test_protected_mathematical_and_published_data_are_unchanged() -> None:
 def test_environment_examples_and_deploy_files_contain_no_secrets() -> None:
     env_lines = (ROOT / ".env.example").read_text(encoding="utf-8").splitlines()
     values = dict(line.split("=", 1) for line in env_lines if line and not line.startswith("#"))
-    assert values["GEMINI_API_KEY"] == ""
     assert values["VITE_API_BASE_URL"] == "http://127.0.0.1:8000"
     assert "FRONTEND_ORIGINS" in values
 

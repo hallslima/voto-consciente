@@ -5,10 +5,6 @@ export const PRESENTATION_DATA = Object.freeze({
   themes: 7,
   publishedQuestions: 7,
   researchParticipants: 135,
-  ocrDocuments: 1,
-  reviewedEvidence: 41,
-  pendingEvidence: 52,
-  automatedTests: 135,
 });
 
 export const RESEARCH_RESULTS = Object.freeze([

@@ -8,7 +8,7 @@ export const slides = Object.freeze([
   { id: 'evidencias', title: 'Evidências da necessidade', section: 'Pesquisa', estimatedSeconds: 55, notes: 'Separe claramente pesquisa própria e contexto externo.' },
   { id: 'objetivo', title: 'Pergunta de pesquisa e objetivo', section: 'Pesquisa', estimatedSeconds: 35, notes: 'Reforce que a ferramenta não recomenda voto.' },
   { id: 'dados', title: 'Dados utilizados', section: 'Método', estimatedSeconds: 45, notes: 'Os números vêm da auditoria atual do repositório.' },
-  { id: 'preparacao', title: 'Como os dados foram preparados', section: 'Método', estimatedSeconds: 45, notes: 'Destaque o encadeamento e a revisão humana.' },
+  { id: 'preparacao', title: 'Como os dados foram preparados', section: 'Método', estimatedSeconds: 45, notes: 'Destaque que a preparação foi offline e o cálculo é determinístico.' },
   { id: 'perguntas', title: 'Como as perguntas foram criadas', section: 'Método', estimatedSeconds: 55, notes: 'Explique neutralidade, rastreabilidade e limites da IA.' },
   { id: 'questionario', title: 'Questionário e importância', section: 'Produto', estimatedSeconds: 45, notes: 'Mostre como o peso altera a influência de cada tema.' },
   { id: 'motor', title: 'Motor matemático', section: 'Produto', estimatedSeconds: 55, notes: 'Faça a conta em voz alta: quatro de seis.' },

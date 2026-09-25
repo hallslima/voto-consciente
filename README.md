@@ -1,95 +1,121 @@
 # Voto Consciente Pernambuco
 
-# Voto Consciente Pernambuco
+Aplicação que compara as prioridades informadas pelo eleitor com propostas documentadas nos planos de governo das candidaturas analisadas. A ferramenta apresenta correspondência temática e não recomenda voto, não avalia viabilidade e não prevê o cumprimento das propostas.
 
-Aplicação React para comparar prioridades pessoais com propostas documentadas nos planos de governo das candidaturas analisadas. O cálculo do Índice de Correspondência Temática (ICT) permanece determinístico e centralizado em Python; o React cuida da experiência de preenchimento, apresentação e leitura dos resultados.
+## Objetivo
 
-O projeto não indica voto, não avalia caráter, competência, viabilidade ou cumprimento de propostas. Ele organiza evidências para facilitar uma investigação própria.
+Facilitar a comparação entre respostas do usuário e posições previamente estruturadas a partir dos planos oficiais do Tribunal Superior Eleitoral (TSE). Os PDFs permanecem disponíveis na interface para consulta.
 
-## Executar em desenvolvimento
-
-Instale as dependências Python:
-
-```bash
-python -m pip install -r requirements.txt
-```
-
-Em um terminal, inicie a API:
-
-```bash
-uvicorn app:app --reload --port 8000
-```
-
-Em outro terminal, instale e inicie o frontend:
-
-```bash
-npm install
-npm run dev
-```
-
-Abra o endereço informado pelo Vite, normalmente `http://localhost:5173`.
-
-## Estrutura
-
-- `app.py`: API FastAPI, validação do payload e serialização dos resultados.
-- `scoring.py`: cálculo do ICT e memória de cálculo.
-- `validation.py`: auditoria estrutural da matriz.
-- `data/questions.json`: perguntas e alternativas.
-- `data/candidates.json`: perfis, compatibilidades, resumos e fontes.
-- `src/main.jsx`: apresentação, questionário, ranking, comparações e detalhes.
-- `src/styles.css`: identidade visual responsiva da interface.
-- `public/assets/candidates/`: oito fotos associadas por ID e número.
-- `public/documents/government-plans/`: PDFs locais usados na análise.
-- `ai_pipeline/`: prompts, schema e scripts offline de preparação da base.
-- `docs/`: arquitetura, metodologia, fontes, pesquisa, apresentação e testes.
-- `tests/test_scoring.py`: testes do cálculo e da matriz.
-
-## Regra de cálculo
+## Arquitetura
 
 ```text
-ICT(c) = 100 × soma(peso(q) × compatibilidade(c,q)) / soma(peso(q))
+Planos oficiais do TSE
+        ↓
+Preparação inicial dos dados com apoio do Gemini
+        ↓
+Perguntas e matriz estruturadas em JSON
+        ↓
+Questionário em React
+        ↓
+Cálculo determinístico em Python
+        ↓
+Resultados, cobertura e fontes
 ```
 
-A soma considera somente perguntas respondidas que possuem evidência classificada para a candidatura. A opção “Não tenho opinião formada” não entra no cálculo. Uma lacuna documental fica fora do denominador e reduz a cobertura, sem receber nota zero.
+O frontend React/Vite solicita os dados à API FastAPI, envia respostas e pesos para `/api/results` e exibe a resposta. O cálculo fica exclusivamente em `scoring.py`.
 
-O resultado representa correspondência temática documentada, não indicação de voto.
+## Dados utilizados
 
-## Papel da IA e dados revisados
+- `data/questions.json`: sete perguntas e suas alternativas.
+- `data/candidates.json`: candidaturas deferidas, matriz de compatibilidade, resumos, páginas e fontes.
+- `data/research_evidence.json`: pesquisa exploratória da equipe e suas limitações.
+- `public/assets/candidates/`: fotos das candidaturas.
+- `public/documents/government-plans/`: PDFs oficiais disponíveis para consulta.
 
-A IA pode auxiliar a preparação offline: extração por plano, organização temática, identificação de contrastes e rascunho de perguntas. A equipe confere trechos, páginas, classificação, neutralidade e fontes. Saídas pendentes ficam em `data/generated/`; somente conteúdo revisado pode chegar à matriz publicada. O runtime não lê `data/generated/`, não envia respostas ao Gemini e nunca usa Gemini para o ranking.
+## Papel da inteligência artificial
 
-O uso de Gemini é opcional. Variáveis disponíveis em `.env.example`: `GEMINI_API_KEY` e `GEMINI_MODEL`. Nenhuma chave é necessária para executar o MVP.
+A equipe informa que utilizou o Gemini como apoio offline na preparação inicial: diagnóstico dos planos, organização temática, comparação das propostas e estruturação das perguntas e da matriz. Os artefatos originais dessa etapa não estão integralmente versionados, o que limita sua rastreabilidade técnica.
 
-## Pesquisa própria
+Nenhum modelo de IA é consultado durante o preenchimento do questionário ou o cálculo dos resultados.
 
-A apresentação inclui **Evidências da necessidade do projeto**, baseada em 135 respostas de uma pesquisa exploratória por amostra de conveniência em Pernambuco. Os percentuais descrevem apenas o grupo consultado e não representam todo o eleitorado pernambucano. Os dados e limitações estão em `data/research_evidence.json`.
+## Funcionamento do ICT
+
+```text
+ICT(c) = 100 × soma(peso(q) × compatibilidade(c,q)) / soma(pesos válidos)
+```
+
+As compatibilidades são previamente estruturadas como `0`, `0,5` ou `1`. Os pesos informados pelo usuário são `1`, `2` ou `3`. “Não tenho opinião” não participa do cálculo. Tema sem posição documentada fica fora do denominador e reduz a cobertura; isso não significa posição contrária.
+
+Os resultados são ordenados por ICT, pontos de prioridade e nome, conforme o motor Python.
+
+## Execução local
+
+```powershell
+python -m pip install -r requirements.txt
+npm install
+```
+
+Inicie a API:
+
+```powershell
+python -m uvicorn app:app --reload --host 127.0.0.1 --port 8000
+```
+
+Em outro terminal, inicie o frontend:
+
+```powershell
+npm run dev -- --host 127.0.0.1
+```
 
 ## Testes
 
-```bash
-pytest
-npm run build
+```powershell
+$pytestTemp = Join-Path (Get-Location) ".pytest_cache\local-temp"
+.\.venv\Scripts\python.exe -m pytest -v --basetemp "$pytestTemp"
+npm.cmd run build
 ```
 
-O backend pode ser executado com `uvicorn app:app --reload --port 8000` e o frontend com `npm run dev`. A documentação detalhada está em `docs/`.
+A suíte preservada cobre cálculo, API, matriz, ativos públicos, interface, apresentação e implantação.
 
-## Apresentação integrada
+## Implantação
 
-O menu **Apresentação** abre uma página de apresentação dentro do próprio site. Ela organiza a fala em doze slides:
+- Netlify: build do frontend com `npm run build`, publicando `dist/`.
+- Render: instalação de `requirements.txt` e inicialização com Uvicorn.
+- `VITE_API_BASE_URL`: endereço público da API.
+- `VITE_PUBLIC_SITE_URL`: endereço público do MVP usado pelos QR Codes.
+- `FRONTEND_ORIGINS`: origens permitidas pela API.
 
-1. Capa da apresentação.
-2. Problema e relevância.
-3. Pergunta de pesquisa, objetivo e recorte.
-4. Dados utilizados.
-5. Inteligência Artificial na construção da base.
-6. Construção das perguntas e Modo Geral.
-7. Arquitetura tecnológica.
-8. Motor matemático, ICT e indicador de cobertura.
-9. Exemplo prático de cálculo auditável.
-10. Testes, validações e revisão humana.
-11. Demonstração do MVP.
-12. Conclusões, limitações, próximos passos e equipe.
+## Limitações
 
-O MVP atual utiliza somente o Modo Geral. O indicador de cobertura é calculado pelo campo `coverage` do motor Python: temas respondidos com evidência para a candidatura divididos pelo total de temas respondidos pelo usuário. Ele representa a cobertura do recorte respondido, não a cobertura integral do plano.
+- A preparação inicial ocorreu fora do código da aplicação e não possui rastreabilidade técnica completa por `evidence_id`.
+- A matriz representa propostas documentadas; não mede qualidade ou viabilidade.
+- A ferramenta não prevê cumprimento das propostas.
+- Ausência de proposta documentada não significa posição contrária.
+- O resultado representa correspondência temática, não recomendação de voto.
+- A pesquisa própria utiliza amostra por conveniência e não representa todo o eleitorado.
 
-O botão final da apresentação retorna ao questionário real, permitindo apresentar a narrativa e demonstrar o MVP no mesmo endereço.
+## Estrutura principal
+
+```text
+data/
+├── questions.json
+├── candidates.json
+└── research_evidence.json
+
+public/
+├── assets/candidates/
+└── documents/government-plans/
+
+src/
+├── presentation/
+├── main.jsx
+├── api.js
+└── styles.css
+
+tests/
+app.py
+scoring.py
+validation.py
+netlify.toml
+render.yaml
+```

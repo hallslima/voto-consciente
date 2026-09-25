@@ -20,6 +20,6 @@ O artigo do Estadão e o Tem Meu Voto representam soluções de comparação ele
 | Cálculo | Metodologia própria | ICT com pesos 1, 2 e 3 |
 | Ausência | Considerada no método | Exibida na cobertura |
 | Rastreabilidade | Fontes das posições | Documento, resumo, página ou seção |
-| IA | Não afirmar sem evidência | Extração assistida com revisão humana |
+| IA | Não afirmar sem evidência | Apoio offline declarado pela equipe; artefatos originais não estão integralmente versionados |
 
 A comparação é neutra e não copia texto, design ou código.

@@ -4,4 +4,4 @@
 
 Testes manuais: carregar bootstrap, responder um tema, usar pesos diferentes, conferir três primeiros, barras, radar, memória, foto nominal, PDF local, TSE, documento e página/seção; repetir em viewport móvel. Conferir oito associações de ativos e apresentação da pesquisa.
 
-Critérios de aceitação: ICT e cobertura permanecem determinísticos; respostas não são enviadas a IA; registros pendentes não entram na matriz; PDFs e fotos existem nos caminhos publicados; ausência é visível e não vira nota zero; não há segredo no repositório; `pytest` e `npm run build` passam.
+Critérios de aceitação: ICT e cobertura permanecem determinísticos; respostas não são enviadas a IA; PDFs e fotos existem nos caminhos publicados; ausência é visível e não vira nota zero; não há segredo no repositório; `pytest` e `npm run build` passam.
