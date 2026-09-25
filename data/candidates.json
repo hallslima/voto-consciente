@@ -84,26 +84,6 @@
     }
   },
   {
-    "id": "jeremias",
-    "name": "Professor Jeremias do Banco",
-    "party": "Democrata",
-    "number": "35",
-    "registration_status": "Indeferido",
-    "photo_url": "/assets/candidates/professor-jeremias-35.jpg",
-    "profile_url": "https://divulgacandcontas.tse.jus.br/divulga/#/home",
-    "official_data_url": "https://divulgacandcontas.tse.jus.br/divulga/#/home",
-    "local_plan_url": "/documents/government-plans/professor-jeremias-35.pdf",
-    "plan_document": "professor-jeremias-35.pdf",
-    "social_links": [],
-    "positions": {
-      "q1_saude": {"primary_option": "C", "compatibility": {"A": 0, "B": 0.5, "C": 1}, "evidence_level": 3, "summary": "Propõe novas unidades hospitalares, prontuário eletrônico e telemedicina.", "source": "Professor Jeremias do Banco (Democrata) - Número 35.pdf", "page": "Seção Saúde"},
-      "q2_educacao": {"primary_option": "A", "compatibility": {"A": 1, "B": 0, "C": 0}, "evidence_level": 3, "summary": "Propõe ampliação e construção de escolas militares.", "source": "Professor Jeremias do Banco (Democrata) - Número 35.pdf", "page": "Seção Educação"},
-      "q3_seguranca": {"primary_option": "A", "compatibility": {"A": 1, "B": 0.5, "C": 0, "D": 0}, "evidence_level": 3, "summary": "Propõe concursos, integração tecnológica e redução do estoque de inquéritos.", "source": "Professor Jeremias do Banco (Democrata) - Número 35.pdf", "page": "Seção Segurança"},
-      "q6_emprego": {"primary_option": "B", "compatibility": {"A": 0, "B": 1, "C": 0}, "evidence_level": 3, "summary": "Propõe simplificação para negócios, empreendedorismo e estudo para criação de banco estadual.", "source": "Professor Jeremias do Banco (Democrata) - Número 35.pdf", "page": "Seção Emprego e Renda"},
-      "q7_assistencia": {"primary_option": "B", "compatibility": {"A": 0.5, "B": 1, "C": 0}, "evidence_level": 2, "summary": "O plano apresenta apoio a famílias e ações itinerantes, mas a classificação nesta alternativa precisa de revisão do grupo.", "source": "Professor Jeremias do Banco (Democrata) - Número 35.pdf", "page": "Seção Assistência Social"}
-    }
-  },
-  {
     "id": "camila",
     "name": "Professora Camila",
     "party": "UP",

@@ -37,7 +37,11 @@ def load_json(filename: str) -> Any:
 
 
 QUESTIONS = load_json("questions.json")
-CANDIDATES = load_json("candidates.json")
+CANDIDATES = [
+    candidate
+    for candidate in load_json("candidates.json")
+    if candidate.get("registration_status") == "Deferido"
+]
 RESEARCH_EVIDENCE = load_json("research_evidence.json")
 MATRIX_ERRORS = validate_matrix(QUESTIONS, CANDIDATES)
 
