@@ -9,16 +9,18 @@ Atualizada em 25 de setembro de 2026. O recorte publicado contém somente candid
 | Páginas dos documentos | 311 | PDFs em `public/documents/government-plans/` | Total dos sete documentos do recorte atual. Os PDFs ficam disponíveis para consulta e não são processados durante o questionário. |
 | Temas | 7 | `data/questions.json` | Sete temas distintos. |
 | Perguntas publicadas | 7 | `data/questions.json` e `/api/bootstrap` | O bootstrap expõe as sete perguntas. |
-| Participantes da pesquisa | 135 | `data/research_evidence.json` | Amostra por conveniência; não representa todo o eleitorado de Pernambuco. |
+| Participantes da pesquisa | 136 | `data/research_evidence.json` | Resultado consolidado pela equipe; amostra por conveniência. |
+| Conhecem pouco ou apenas algumas candidaturas | 79,4% | `data/research_evidence.json` | Descreve o grupo participante; não representa todo o eleitorado. |
+| Dizem conhecer poucas propostas dos candidatos | 40,4% | `data/research_evidence.json` | Descreve o grupo participante; não representa todo o eleitorado. |
 
 ## Divergências resolvidas
 
 - O MVP atual possui sete candidaturas deferidas.
 - Os sete PDFs associados somam 311 páginas.
-- A pesquisa registra 135 participantes.
+- A pesquisa registra 136 participantes e usa como indicadores oficiais 79,4% e 40,4%.
 - O questionário publicado possui sete perguntas.
 
-Não há fonte registrada que comprove a frase “517 candidatos a deputado estadual”. A apresentação usa a formulação conservadora sobre centenas de candidaturas em uma eleição completa e esclarece que deputados não fazem parte do recorte.
+Fotos e PDFs sem vínculo com as sete candidaturas foram retirados do diretório público. O inventário publicado possui sete fotos e sete planos ativos.
 
 ## Limitação de rastreabilidade
 

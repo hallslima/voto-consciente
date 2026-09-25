@@ -1,6 +1,8 @@
 # Pesquisa e trabalhos relacionados
 
-A pesquisa própria reuniu 135 respostas por amostra de conveniência divulgada na rede de contatos do grupo, com foco em Pernambuco. Os principais resultados são 80,7% conhecendo poucos ou alguns candidatos, 77,0% citando somente dois ou três, 97,8% sem conhecer bem propostas de vários candidatos e 29,7% considerando difícil ou muito difícil encontrar informação confiável. São evidências descritivas do grupo consultado, não estimativas do eleitorado.
+A pesquisa própria consolidada pela equipe reuniu 136 participantes por amostra de conveniência divulgada na rede de contatos do grupo, com foco em Pernambuco. Os dois indicadores adotados na apresentação final são 79,4% que conhecem pouco ou apenas algumas candidaturas e 40,4% que dizem conhecer poucas propostas dos candidatos.
+
+São resultados descritivos do grupo participante, não estimativas do eleitorado. Eles não podem ser generalizados para todo o eleitorado de Pernambuco. `data/research_evidence.json` é a fonte estruturada oficial e preserva os demais indicadores, as URLs, o método de amostragem e as limitações da pesquisa.
 
 Fontes externas classificadas:
 

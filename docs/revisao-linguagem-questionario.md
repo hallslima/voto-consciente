@@ -14,4 +14,4 @@ Esta revisão altera somente textos de apresentação. IDs de perguntas, IDs de 
 
 ## Limitação dos canais
 
-As duas entradas apresentadas como WhatsApp foram ignoradas porque continham espaços e não eram URLs HTTP/HTTPS válidas. Nenhum número foi convertido ou inferido. Guilherme Fonseca e Professor Jeremias do Banco permanecem sem canais oficiais, pois nenhum endereço funcional foi informado na fonte consultada. Os endereços fornecidos foram validados apenas sintaticamente; este trabalho não afirma que tenham sido acessados ou verificados externamente.
+As duas entradas apresentadas como WhatsApp foram ignoradas porque continham espaços e não eram URLs HTTP/HTTPS válidas. Nenhum número foi convertido ou inferido. Guilherme Fonseca permanece sem canais oficiais, pois nenhum endereço funcional foi informado na fonte consultada. Os endereços fornecidos foram validados apenas sintaticamente; este trabalho não afirma que tenham sido acessados ou verificados externamente.

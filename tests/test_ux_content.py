@@ -20,6 +20,30 @@ def test_public_copy_has_correct_non_storage_message():
     assert "As respostas são usadas apenas para calcular o resultado e não são armazenadas pelo sistema." in public_text
 
 
+def test_readme_explains_application_level_privacy_without_infrastructure_promise():
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    source = (ROOT / "src" / "main.jsx").read_text(encoding="utf-8")
+    for statement in (
+        "Não existe banco de dados de respostas, login ou perfil do eleitor.",
+        "estado temporário da interface",
+        "enviadas à API somente para o cálculo",
+        "não são gravadas pela aplicação",
+        "`localStorage`, `sessionStorage` ou cookies",
+        "logs operacionais da infraestrutura",
+    ):
+        assert statement in readme
+    for storage_api in ("localStorage", "sessionStorage", "document.cookie", "indexedDB"):
+        assert storage_api not in source
+
+
+def test_research_form_and_spreadsheet_urls_are_not_consumed_by_frontend_components():
+    main = (ROOT / "src" / "main.jsx").read_text(encoding="utf-8")
+    presentation = (ROOT / "src" / "presentation" / "Presentation.jsx").read_text(encoding="utf-8")
+    assert "research_evidence" not in main
+    assert "form_url" not in main + presentation
+    assert "spreadsheet_url" not in main + presentation
+
+
 def test_result_help_actions_and_accessible_weights_are_present():
     source = (ROOT / "src" / "main.jsx").read_text(encoding="utf-8")
     assert source.count('className="result-help"') == 1

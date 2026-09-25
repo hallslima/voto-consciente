@@ -81,10 +81,10 @@ Reinicie com `cmd /c npm run dev -- --host 127.0.0.1`. Como alternativa, após u
 
 - [ ] API responde `ok: true`.
 - [ ] Frontend abre sem tela vazia ou erro no console.
-- [ ] Sete perguntas e oito candidaturas carregam.
+- [ ] Sete perguntas e sete candidaturas carregam.
 - [ ] Fotos e PDFs locais abrem.
 - [ ] Resultado mostra top 3, barras, radar, detalhes, ICT e cobertura.
 - [ ] Layout foi conferido em desktop e largura móvel.
-- [ ] Nenhuma decisão humana foi preenchida.
-- [ ] Manifesto e matriz permanecem inalterados.
+- [ ] Nenhum resultado foi antecipado ou alterado manualmente.
+- [ ] Perguntas, matriz e motor matemático permanecem inalterados.
 - [ ] Plano alternativo está disponível.

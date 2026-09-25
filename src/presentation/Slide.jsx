@@ -1,5 +1,3 @@
-import PresentationQRCode from './components/PresentationQRCode';
-
 export default function Slide({ slide, number, total, children, print = false }) {
   return (
     <article
@@ -9,7 +7,7 @@ export default function Slide({ slide, number, total, children, print = false })
     >
       <header className="slide-kicker"><span>{slide.section}</span><span>{String(number).padStart(2, '0')} / {total}</span></header>
       <div className="slide-content">{children}</div>
-      <footer className="slide-footer"><span>Voto Consciente Pernambuco</span><PresentationQRCode compact /></footer>
+      <footer className="slide-footer"><span>Voto Consciente Pernambuco</span></footer>
     </article>
   );
 }

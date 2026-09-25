@@ -1,7 +1,5 @@
 import { QRCodeSVG } from 'qrcode.react';
-import { PUBLIC_SITE_URL, mvpUrl } from '../presentationData';
 
-export default function PresentationQRCode({ compact = false, large = false }) {
-  const size = large ? 132 : compact ? 54 : 88;
-  return <a className={`presentation-qr${large ? ' presentation-qr--large' : ''}`} href={mvpUrl()} aria-label={`Acesse o MVP em ${PUBLIC_SITE_URL}`}><span className="qr-image" aria-hidden="true"><QRCodeSVG value={mvpUrl()} size={size} level="M" bgColor="#ffffff" fgColor="#19332e" marginSize={2} /></span><span>Acesse o MVP<small>{large ? PUBLIC_SITE_URL : ''}</small></span></a>;
+export default function PresentationQRCode({ url }) {
+  return <a className="demo-qr-code" href={url} aria-label={`Abrir Voto Consciente Pernambuco em ${url}`}><QRCodeSVG value={url} size={380} level="M" bgColor="#ffffff" fgColor="#19332e" marginSize={3} /></a>;
 }

@@ -79,9 +79,21 @@ def results(payload: QuestionnairePayload) -> dict[str, Any]:
         raise HTTPException(status_code=500, detail=MATRIX_ERRORS)
 
     question_ids = {question["id"] for question in QUESTIONS}
+    option_ids = {
+        question["id"]: {option["id"] for option in question["options"]}
+        for question in QUESTIONS
+    }
     unknown_answers = set(payload.answers) - question_ids
     if unknown_answers:
         raise HTTPException(status_code=400, detail="Pergunta desconhecida no questionário.")
+
+    invalid_answers = {
+        question_id
+        for question_id, answer in payload.answers.items()
+        if answer != NO_OPINION and answer not in option_ids[question_id]
+    }
+    if invalid_answers:
+        raise HTTPException(status_code=400, detail="Alternativa inválida no questionário.")
 
     invalid_weights = {
         question_id

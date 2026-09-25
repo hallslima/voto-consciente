@@ -64,52 +64,188 @@ def test_fullscreen_and_print_require_explicit_buttons():
 def test_demo_round_trip_uses_named_demo_slide():
     main = (ROOT / "src" / "main.jsx").read_text(encoding="utf-8")
     data = source("presentationData.js")
-    component = source("Presentation.jsx")
     assert "DEMO_SLIDE_ID = 'demo'" in data
     assert "origem', 'apresentacao'" in data
     assert "retorno', DEMO_SLIDE_ID" in data
     assert "return-to-presentation" in main
-    assert "mvpUrl({ fromPresentation: true })" in component
 
 
-def test_qr_code_is_rendered_by_shared_slide_footer_and_is_local():
+def test_qr_code_is_not_rendered_by_shared_slide_footer():
     slide = source("Slide.jsx")
     qr = source("components/PresentationQRCode.jsx")
     package = json.loads((ROOT / "package.json").read_text(encoding="utf-8"))
-    assert "<PresentationQRCode compact />" in slide
+    assert "PresentationQRCode" not in slide
+    assert "Acesse o MVP" not in slide
     assert "QRCodeSVG" in qr
     assert "qrcode.react" in package["dependencies"]
     assert "api.qrserver" not in qr.lower()
 
 
+def test_only_demo_slide_renders_the_large_public_qr_code():
+    component = source("Presentation.jsx")
+    data = source("presentationData.js")
+    demo_case = component.split("case 'demo':", 1)[1].split("case 'limitacoes':", 1)[0]
+    conclusion_case = component.split("case 'conclusao':", 1)[1].split("default:", 1)[0]
+    assert component.count("<PresentationQRCode") == 1
+    assert "<PresentationQRCode" in demo_case
+    assert "<PresentationQRCode" not in conclusion_case
+    assert "<PresentationQRCode url={PUBLIC_SITE_URL}" in demo_case
+    assert "import.meta.env.VITE_PUBLIC_SITE_URL" in data
+    assert "https://voto-consciente.netlify.app/" in data
+    assert "https://voto-consciente.netlify.app/" not in component
+
+
+def test_demo_slide_is_qr_focused_and_removes_old_actions():
+    component = source("Presentation.jsx")
+    demo_case = component.split("case 'demo':", 1)[1].split("case 'limitacoes':", 1)[0]
+    assert "Aponte a câmera do celular e responda ao questionário" in demo_case
+    assert "Voto Consciente Pernambuco" in demo_case
+    assert "Não é necessário fazer cadastro." in demo_case
+    for removed in ("A demonstração abre", "Abrir demonstração", "mini-browser", "demo-preview"):
+        assert removed not in demo_case
+
+
+def test_demo_qr_has_prominent_responsive_size():
+    css = source("Presentation.css")
+    rule = re.search(r"\.demo-qr-code \{([^}]+)\}", css).group(1)
+    assert "width: clamp(260px, 28vw, 380px)" in rule
+    assert "aspect-ratio: 1" in rule
+
+
 def test_external_context_links_open_safely():
     component = source("Presentation.jsx")
-    assert component.count('target="_blank" rel="noopener noreferrer"') == 2
+    evidence_card = source("components/EvidenceCard.jsx")
+    assert 'target="_blank"' in evidence_card
+    assert 'rel="noopener noreferrer"' in evidence_card
+    assert "abre em nova aba" in evidence_card
     assert "g1.globo.com" in component
     assert "veja.abril.com.br" in component
 
 
-def test_presentation_data_matches_current_repository_scope():
+def test_presentation_data_matches_current_repository_scope_and_imports_official_research():
     candidates = json.loads((ROOT / "data" / "candidates.json").read_text(encoding="utf-8"))
     questions = json.loads((ROOT / "data" / "questions.json").read_text(encoding="utf-8"))
-    research = json.loads((ROOT / "data" / "research_evidence.json").read_text(encoding="utf-8"))
     presentation_data = source("presentationData.js")
     expected = {
         "candidacies": len(candidates),
         "officialPlans": len(candidates),
         "themes": len({question["theme"] for question in questions}),
         "publishedQuestions": len(questions),
-        "researchParticipants": research["sample_size"],
     }
     for key, value in expected.items():
         assert re.search(rf"{key}: {value},", presentation_data)
+    assert "import researchEvidence from '../../data/research_evidence.json'" in presentation_data
+    assert "researchParticipants: researchEvidence.sample_size" in presentation_data
+    assert "researchResult('candidate_awareness')" in presentation_data
+    assert "researchResult('proposal_awareness')" in presentation_data
+    assert "researchParticipants: 136" not in presentation_data
 
 
-def test_every_slide_gets_qr_code_through_slide_component():
+def test_toolbar_stage_and_navigation_are_separate_structural_areas():
     component = source("Presentation.jsx")
+    toolbar = component.index('<header className="presentation-toolbar"')
+    stage = component.index('<div className="presentation-stage"', toolbar)
+    navigation = component.index('<footer className="presentation-navigation">', stage)
+    assert toolbar < stage < navigation
+    stage_markup = component[stage:navigation]
+    assert "Voltar ao MVP" not in stage_markup
+    assert "Imprimir ou salvar em PDF" not in stage_markup
+    assert 'className="presentation-slide-frame"' in stage_markup
+
+
+def test_controls_are_in_flow_outside_the_slide():
+    css = source("Presentation.css")
+    assert "grid-template-rows: auto minmax(0, 1fr) auto" in css
+    assert "grid-template-columns: 1fr auto 1fr" in css
+    toolbar_rule = re.search(r"\.presentation-toolbar \{([^}]+)\}", css).group(1)
+    controls_rule = re.search(r"\.presentation-controls \{([^}]+)\}", css).group(1)
+    assert "position: fixed" not in toolbar_rule
+    assert "position: absolute" not in toolbar_rule
+    assert "position: fixed" not in controls_rule
+    assert "position: absolute" not in controls_rule
+
+
+def test_slide_seven_has_three_independent_evidence_cards_and_updated_values():
+    component = source("Presentation.jsx")
+    data = source("presentationData.js")
+    research = json.loads((ROOT / "data" / "research_evidence.json").read_text(encoding="utf-8"))
+    results = {item.get("id"): item for item in research["results"]}
+    evidence_case = component.split("case 'evidencias':", 1)[1].split("case 'objetivo':", 1)[0]
+    assert evidence_case.count("<EvidenceCard") == 3
+    for text in ("Pesquisa do grupo", "69%", "88%", "59%"):
+        assert text in component or text in data
+    assert research["sample_size"] == 136
+    assert results["candidate_awareness"]["percentage"] == 79.4
+    assert results["proposal_awareness"]["percentage"] == 40.4
+    assert "metrics.researchParticipants" in evidence_case
+    assert "RESEARCH_RESULTS.map" in evidence_case
+    for duplicated_value in ("136 participantes", "79.4", "40.4", "79,4%", "40,4%"):
+        assert duplicated_value not in data
+        assert duplicated_value not in evidence_case
+
+
+def test_slide_seven_states_context_and_limitations():
+    component = source("Presentation.jsx")
+    assert "amostra por conveniência" in component
+    assert "não representam todo o eleitorado de Pernambuco" in component
+    assert "Fonte externa referente ao Rio de Janeiro" in component
+    assert "Dado nacional usado como contexto histórico de 2018" in component
+    assert "Não representa Pernambuco em 2026" in component
+
+
+def test_question_example_comes_from_official_questions_json():
+    questions = json.loads((ROOT / "data" / "questions.json").read_text(encoding="utf-8"))
+    health = next(question for question in questions if question["id"] == "q1_saude")
+    data = source("presentationData.js")
+    component = source("Presentation.jsx")
+    assert "import questions from '../../data/questions.json'" in data
+    assert "question.id === 'q1_saude'" in data
+    assert "HEALTH_QUESTION.text" in component
+    assert "HEALTH_QUESTION.options.map" in component
+    assert health["text"] not in component
+
+
+def test_current_scope_and_pipeline_boundaries_are_explicit():
+    component = source("Presentation.jsx")
+    data = source("presentationData.js")
+    assert "candidacies: 7" in data
+    assert "officialPlans: 7" in data
+    assert "analyzedPages: 311" in data
+    assert "themes: 7" in data
+    assert "publishedQuestions: 7" in data
+    assert "Nenhuma inteligência artificial analisa as respostas durante o uso" in component
+    assert "não possui rastreabilidade técnica completa" in component
+    for obsolete in ("OCR", "PyPDF", "Tesseract", "manifesto", "revisão humana"):
+        assert obsolete.casefold() not in component.casefold()
+
+
+def test_evidence_cards_are_responsive_without_internal_scroll():
+    css = source("Presentation.css")
+    assert "grid-template-columns: repeat(3, minmax(0, 1fr))" in css
+    assert "grid-template-columns: repeat(2, minmax(0, 1fr))" in css
+    mobile = css.split("@media (max-width: 700px)", 1)[1].split("@media (max-width: 380px)", 1)[0]
+    assert ".evidence-grid { grid-template-columns: 1fr" in mobile
+    evidence_rule = re.search(r"\.evidence-card \{([^}]+)\}", css).group(1)
+    assert "overflow" not in evidence_rule
+
+
+def test_print_hides_all_controls_and_keeps_only_slide_deck():
+    css = source("Presentation.css")
+    print_css = css.split("@media print", 1)[1]
+    for selector in (".presentation-toolbar", ".presentation-navigation", ".presentation-notes-button", ".speaker-notes"):
+        assert selector in print_css
+    assert ".print-deck { display: block !important; }" in print_css
+
+
+def test_slide_footer_keeps_no_qr_placeholder_or_qr_styles():
+    component = source("Presentation.jsx")
+    css = source("Presentation.css")
+    slide = source("Slide.jsx")
     assert "<Slide slide={current}" in component
     assert "slides.map((slide, index) => <Slide" in component
-    assert "PresentationQRCode" in source("Slide.jsx")
+    assert "justify-content: space-between" not in re.search(r"\.slide-footer \{([^}]+)\}", css).group(1)
+    assert "presentation-qr" not in css
+    assert "Acesse o MVP" not in slide
 
 
 def test_print_css_uses_one_widescreen_slide_per_page():

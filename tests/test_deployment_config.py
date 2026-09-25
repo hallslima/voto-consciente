@@ -95,6 +95,7 @@ def test_environment_examples_and_deploy_files_contain_no_secrets() -> None:
     env_lines = (ROOT / ".env.example").read_text(encoding="utf-8").splitlines()
     values = dict(line.split("=", 1) for line in env_lines if line and not line.startswith("#"))
     assert values["VITE_API_BASE_URL"] == "http://127.0.0.1:8000"
+    assert values["VITE_PUBLIC_SITE_URL"] == "https://voto-consciente.netlify.app"
     assert "FRONTEND_ORIGINS" in values
 
     versioned_config = "\n".join(
