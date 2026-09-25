@@ -78,7 +78,7 @@ def test_health_check_reports_matrix_validation() -> None:
 def test_protected_mathematical_and_published_data_are_unchanged() -> None:
     scoring = (ROOT / "scoring.py").read_bytes()
     header = f"blob {len(scoring)}\0".encode()
-    assert hashlib.sha1(header + scoring).hexdigest() == "a24326f1530d4118d081d9b34ce5c81edbcdba2f"
+    assert hashlib.sha1(header + scoring).hexdigest() == "fd2bf422dbe4870d0fd18a40245f6a1aae250a5a"
 
     questions = json.loads((ROOT / "data/questions.json").read_text(encoding="utf-8"))
     question_contract = [
@@ -89,7 +89,7 @@ def test_protected_mathematical_and_published_data_are_unchanged() -> None:
 
     candidates = json.loads((ROOT / "data/candidates.json").read_text(encoding="utf-8"))
     protected_candidate_data = [{key: value for key, value in item.items() if key != "social_links"} for item in candidates]
-    assert hashlib.sha256(json.dumps(protected_candidate_data, sort_keys=True, ensure_ascii=False).encode()).hexdigest() == "9dd334018bf65da51223691117a7a60c6db1fab9670c90ea841a32b500bf8baa"
+    assert hashlib.sha256(json.dumps(protected_candidate_data, sort_keys=True, ensure_ascii=False).encode()).hexdigest() == "d39ffbc8faaf66400ea4df5d469bcc759a3f8d9dcf39b696f9100d9d4545c687"
 
 
 def test_environment_examples_and_deploy_files_contain_no_secrets() -> None:

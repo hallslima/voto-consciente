@@ -1,18 +1,14 @@
 import { StrictMode, useEffect, useMemo, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { apiUrl } from './api';
+import Presentation from './presentation/Presentation';
+import { DEMO_SLIDE_ID, presentationUrl } from './presentation/presentationData';
 import './styles.css';
 
 const NO_OPINION = 'NO_OPINION';
 const WEIGHT_LABELS = { 1: 'Normal', 2: 'Importante', 3: 'Prioridade máxima' };
 const WEIGHT_EXPLANATIONS = { 1: 'importância comum', 2: 'vale duas vezes mais', 3: 'vale três vezes mais' };
 const METHODOLOGY_NOTICE = 'As propostas foram estruturadas a partir dos planos de governo disponíveis no TSE, com apoio de inteligência artificial e validações técnicas. Parte do acervo encontra-se em processo de revisão humana. O resultado representa correspondência temática, não recomendação de voto, e não avalia a viabilidade ou o cumprimento das propostas.';
-const PROJECT_INDICATORS = [
-  ['8', 'candidaturas'], ['8', 'planos oficiais'], ['318', 'páginas analisadas'], ['7', 'temas'], ['7', 'perguntas'],
-  ['1', 'documento processado com OCR'], ['41', 'evidências revisadas no piloto'], ['79', 'evidências pendentes de revisão'],
-  ['135', 'participantes da pesquisa'], ['99', 'testes automatizados aprovados'],
-];
-
 function initials(name) {
   return name.split(' ').slice(0, 2).map((part) => part[0]).join('').toUpperCase();
 }
@@ -37,7 +33,6 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
-  const [view, setView] = useState('product');
   const [announcement, setAnnouncement] = useState('');
   const resultsSectionRef = useRef(null);
   const shouldRevealResults = useRef(false);
@@ -140,10 +135,10 @@ function App() {
     <main>
       <header className="topbar">
         <a className="brand" href="#top"><span className="brand-mark">VC</span><span>Voto <strong>Consciente</strong></span></a>
-        <nav className="main-nav" aria-label="Navegação principal"><button type="button" className={view === 'presentation' ? 'nav-active' : ''} onClick={() => setView('presentation')}>Apresentação</button><a href="#como-funciona" onClick={() => setView('product')}>Como funciona</a><a href="#questionario" onClick={() => setView('product')}>Questionário</a><a href="#metodo" onClick={() => setView('product')}>Método</a></nav>
+        <nav className="main-nav" aria-label="Navegação principal"><a href="?modo=apresentacao">Apresentação</a><a href="#como-funciona">Como funciona</a><a href="#questionario">Questionário</a><a href="#metodo">Método</a></nav>
         <span className="edition">Pernambuco · 2026</span>
       </header>
-      {view === 'presentation' ? <PresentationSlides data={data} onOpenDemo={() => { setView('product'); window.setTimeout(() => document.getElementById('questionario')?.scrollIntoView({ behavior: 'smooth' }), 0); }} /> : <><section className="hero" id="top">
+      <section className="hero" id="top">
         <div className="hero-copy">
           <p className="eyebrow">Eleições · Pernambuco 2026</p>
           <h1>Seu voto começa<br /><em>nas suas prioridades.</em></h1>
@@ -162,7 +157,8 @@ function App() {
         <Questionnaire data={data} answers={answers} weights={weights} setAnswer={setAnswer} setWeights={setWeights} answeredCount={answeredCount} onCalculate={calculate} submitting={submitting} error={error} />
       ) : (
         <ResultsView results={results} candidates={candidateById} questions={data.questions} resultsRef={resultsSectionRef} selectedId={selectedId} setSelectedId={setSelectedId} openId={openId} setOpenId={setOpenId} onReview={reviewAnswers} onRestart={restart} />
-      )}</>}
+      )}
+      {new URLSearchParams(window.location.search).get('origem') === 'apresentacao' && <a className="return-to-presentation" href={presentationUrl(new URLSearchParams(window.location.search).get('retorno') || DEMO_SLIDE_ID)}>Voltar à apresentação</a>}
       <p className="sr-only" aria-live="polite" aria-atomic="true">{announcement}</p>
       <footer><span>VOTO CONSCIENTE</span><span>A correspondência não avalia viabilidade, qualidade ou cumprimento das propostas.</span></footer>
     </main>
@@ -276,4 +272,5 @@ function ResultAccordion({ result, candidate, questions, position, open, onToggl
   return <div className={`result-accordion ${open ? 'open' : ''}`}><button type="button" className="accordion-trigger" onClick={onToggle}><span className="rank-small">0{position}</span><span className="accordion-name"><b>{result.name}</b><small>{result.party} · {candidate.number}</small></span><span className="accordion-score"><b>{result.score.toFixed(1)}% ICT</b><small>{result.coverage.toFixed(0)}% cobertura</small></span><span className="chevron">⌄</span></button>{open && <div className="accordion-body"><div className="accordion-links"><a href={candidate.local_plan_url} target="_blank" rel="noreferrer">Abrir plano analisado (nova aba) ↗</a><a href={candidate.official_data_url} target="_blank" rel="noreferrer">Consultar fonte oficial no TSE (nova aba) ↗</a></div><p className="document-note">Documento analisado: <b>{candidate.plan_document}</b>. A evidência abaixo informa a página ou seção registrada na matriz.</p>{result.details.map((detail) => { const question = questionById[detail.question_id]; const choice = question?.options.find((option) => option.id === detail.chosen_option); return <div className="detail-item" key={detail.question_id}><div><b>{detail.theme}</b><p className="calculation-line"><strong>Resposta escolhida:</strong> {detail.chosen_option}{choice ? ` — ${choice.text}` : ''}</p><p>{detail.summary || 'Não foi localizada evidência classificada para este tema.'}</p>{detail.source && <small>{detail.source} · {detail.page}</small>}</div><div className={`detail-math ${detail.similarity === null ? 'missing' : ''}`}>{detail.similarity === null ? <span>Sem evidência<br />fora do ICT</span> : <><span>Peso <b>{detail.weight}</b></span><span>Compatibilidade <b>{detail.similarity.toFixed(1).replace('.', ',')}</b></span><span>Pontos ponderados <b>{detail.points.toFixed(1).replace('.', ',')}</b></span></>}</div></div>; })}<p className="result-formula">Soma dos pontos: <b>{result.numerator.toFixed(1)}</b> · Soma dos pesos válidos: <b>{result.denominator.toFixed(1)}</b> · ICT final: <b>{result.score.toFixed(1)}%</b> · Cobertura: <b>{result.coverage.toFixed(0)}%</b></p></div>}</div>;
 }
 
-createRoot(document.getElementById('root')).render(<StrictMode><App /></StrictMode>);
+const presentationMode = new URLSearchParams(window.location.search).get('modo') === 'apresentacao';
+createRoot(document.getElementById('root')).render(<StrictMode>{presentationMode ? <Presentation /> : <App />}</StrictMode>);

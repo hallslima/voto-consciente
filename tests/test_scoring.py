@@ -51,6 +51,19 @@ def test_matrix_uses_only_allowed_compatibility_values():
     assert validate_matrix(load("questions.json"), load("candidates.json")) == []
 
 
+def test_non_deferred_candidate_is_never_scored():
+    questions = [{"id": "q1", "theme": "Tema"}]
+    candidates = [{
+        "id": "ineligible",
+        "name": "Candidatura indeferida",
+        "party": "PARTIDO",
+        "registration_status": "Indeferido",
+        "positions": {"q1": {"primary_option": "A", "compatibility": {"A": 1}}},
+    }]
+
+    assert calculate_results(questions, candidates, {"q1": "A"}, {"q1": 1}) == []
+
+
 def test_api_theme_scores_preserve_total_partial_zero_and_missing_evidence():
     questions = [
         {"id": "total", "theme": "Total"},
@@ -62,6 +75,7 @@ def test_api_theme_scores_preserve_total_partial_zero_and_missing_evidence():
         "id": "candidate",
         "name": "Candidatura",
         "party": "PARTIDO",
+        "registration_status": "Deferido",
         "positions": {
             "total": {"primary_option": "A", "compatibility": {"A": 1}},
             "partial": {"primary_option": "A", "compatibility": {"A": 0.5}},

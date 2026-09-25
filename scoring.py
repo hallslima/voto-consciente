@@ -43,6 +43,10 @@ def calculate_results(
     results: list[CandidateResult] = []
 
     for candidate in candidates:
+        # This function is also used directly by tests and other callers, so
+        # eligibility must not depend only on the API bootstrap filter.
+        if candidate.get("registration_status") != "Deferido":
+            continue
         numerator = 0.0
         denominator = 0.0
         priority_points = 0.0

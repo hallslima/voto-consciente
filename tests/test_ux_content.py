@@ -58,7 +58,7 @@ def test_social_links_are_unique_safe_http_urls_and_invalid_whatsapp_is_absent()
         assert len(urls) == len(set(urls))
         assert all(re.match(r"^https?://[^\s]+$", url) for url in urls)
     without_links = {candidate["id"] for candidate in candidates if not candidate.get("social_links")}
-    assert {"guilherme_fonseca", "jeremias"} <= without_links
+    assert {"guilherme_fonseca"} <= without_links
 
 
 def test_result_photos_and_external_link_protection_are_structural():

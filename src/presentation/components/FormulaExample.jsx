@@ -1,0 +1,3 @@
+export default function FormulaExample() {
+  return <div className="formula-example"><div className="formula-table" role="table" aria-label="Exemplo do cálculo"><div role="row"><b>Tema</b><b>Peso</b><b>Correspondência</b><b>Pontos</b></div><div role="row"><span>Saúde</span><span>3</span><span>100%</span><strong>3</strong></div><div role="row"><span>Transporte</span><span>2</span><span>50%</span><strong>1</strong></div><div role="row"><span>Educação</span><span>1</span><span>0%</span><strong>0</strong></div></div><div className="formula-total"><span>Total obtido: <b>4 pontos</b></span><span>Máximo possível: <b>6 pontos</b></span><strong>4 ÷ 6 = 66,7%</strong></div></div>;
+}

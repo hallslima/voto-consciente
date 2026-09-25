@@ -55,7 +55,8 @@ def errors(record):
 
 def test_candidate_assets_are_associated_and_exist():
     candidates = load_json(ROOT / "data" / "candidates.json")
-    assert len(candidates) == 8
+    assert len(candidates) == 7
+    assert all(candidate["registration_status"] == "Deferido" for candidate in candidates)
     for candidate in candidates:
         photo = ROOT / "public" / candidate["photo_url"].lstrip("/")
         plan = ROOT / "public" / candidate["local_plan_url"].lstrip("/")
@@ -151,9 +152,10 @@ def test_runtime_does_not_consume_generated_reviewed_or_examples():
     assert "Parte do acervo encontra-se em processo de revisão humana" in frontend
     assert "Plano oficial do TSE" in frontend
     assert "Cálculo determinístico" in frontend
-    assert "99 testes automatizados aprovados" in frontend
-    assert "['41', 'evidências revisadas no piloto']" in frontend
-    assert "['79', 'evidências pendentes de revisão']" in frontend
+    presentation_data = (ROOT / "src" / "presentation" / "presentationData.js").read_text(encoding="utf-8")
+    assert "reviewedEvidence: 41" in presentation_data
+    assert "pendingEvidence: 52" in presentation_data
+    assert "automatedTests: 135" in presentation_data
     assert "Rever respostas" in frontend
     assert "Refazer questionário" in frontend
     assert "useRef" in frontend
