@@ -36,6 +36,22 @@ def test_readme_explains_application_level_privacy_without_infrastructure_promis
         assert storage_api not in source
 
 
+def test_ai_agent_copy_is_supervised_offline_and_readme_has_no_license_section():
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    methodology = (ROOT / "docs" / "metodologia-mvp-atual.md").read_text(encoding="utf-8")
+    frontend = (ROOT / "src" / "main.jsx").read_text(encoding="utf-8")
+    assert "## Licença" not in readme
+    assert "Agente de IA generativa supervisionado pela equipe" in readme
+    assert "baseado no Gemini e operado em ambiente de notebook" in readme
+    assert "baseado no Gemini e operado em ambiente de notebook" in methodology
+    assert "não contém o histórico integral das interações" in methodology
+    assert "Durante o uso do questionário, nenhum agente de IA é executado" in readme
+    assert "Durante o questionário, nenhuma IA é executada" in frontend
+    combined = "\n".join((readme, methodology, frontend)).casefold()
+    for unsupported in ("agente autônomo", "agentes de ia"):
+        assert unsupported not in combined
+
+
 def test_research_form_and_spreadsheet_urls_are_not_consumed_by_frontend_components():
     main = (ROOT / "src" / "main.jsx").read_text(encoding="utf-8")
     presentation = (ROOT / "src" / "presentation" / "Presentation.jsx").read_text(encoding="utf-8")

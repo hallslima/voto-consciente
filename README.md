@@ -22,7 +22,7 @@ A pesquisa atual consolidada pela equipe considera 136 participantes. Entre eles
 ```text
 Planos oficiais do TSE
         ↓
-Análise inicial com apoio do Gemini
+Agente de IA generativa supervisionado
         ↓
 Organização dos temas e propostas
         ↓
@@ -46,9 +46,11 @@ O frontend solicita os dados à API, envia respostas e pesos para `/api/results`
 
 ## Metodologia e papel da IA
 
-A equipe utilizou planos oficiais disponíveis no Tribunal Superior Eleitoral (TSE). O Gemini foi utilizado como apoio na preparação inicial e offline das informações. Nenhuma inteligência artificial analisa as respostas durante o uso. Os resultados são calculados por regras matemáticas fixas.
+Na preparação inicial dos dados, a equipe utilizou um agente de IA generativa, baseado no Gemini e operado em ambiente de notebook. O agente apoiou a leitura, a organização e a comparação dos planos de governo. A equipe definiu as instruções, os temas e os critérios utilizados e consolidou os resultados nos arquivos JSON do projeto. Esse processo aconteceu antes da publicação do MVP.
 
-Os artefatos originais dessa preparação não estão integralmente versionados; por isso, a participação do Gemini é uma metodologia declarada pela equipe, com limitação de rastreabilidade técnica. Os dados finais consumidos pelo MVP estão em `data/questions.json`, `data/candidates.json` e `data/research_evidence.json`.
+Durante o uso do questionário, nenhum agente de IA é executado. As respostas são comparadas com uma matriz previamente preparada, e o resultado é calculado por regras matemáticas determinísticas em Python.
+
+**Agente de IA generativa supervisionado pela equipe.** Tecnologia do agente: Gemini em ambiente de notebook. O repositório preserva os dados finais utilizados pelo MVP, mas não contém o histórico integral das interações realizadas com o agente de IA durante a preparação inicial.
 
 ## Motor matemático
 
@@ -140,7 +142,3 @@ As configurações demonstram como publicar o sistema, mas não comprovam por si
 - Avaliar a expansão do questionário e do recorte somente após nova validação documental.
 - Melhorar os links oficiais específicos de cada candidatura.
 - Avaliar a necessidade de retirar do bootstrap as URLs da pesquisa, hoje não consumidas pelo frontend.
-
-## Licença
-
-O repositório ainda não possui licença. A escolha permanece pendente de decisão da equipe.

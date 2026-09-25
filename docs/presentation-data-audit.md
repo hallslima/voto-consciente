@@ -24,4 +24,4 @@ Fotos e PDFs sem vínculo com as sete candidaturas foram retirados do diretório
 
 ## Limitação de rastreabilidade
 
-A preparação inicial com apoio do Gemini foi informada pela equipe, mas seus artefatos originais não estão integralmente versionados. A apresentação não descreve essa preparação como automaticamente reproduzível ou completamente rastreável.
+A preparação inicial contou com um agente de IA generativa supervisionado pela equipe, baseado no Gemini e operado em ambiente de notebook. O repositório preserva os dados finais utilizados pelo MVP, mas não contém o histórico integral das interações com o agente. A apresentação não descreve essa preparação como autônoma, automaticamente reproduzível ou completamente rastreável.

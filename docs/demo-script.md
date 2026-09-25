@@ -33,7 +33,7 @@ URLs:
 ## 3. Sequência de demonstração — 6 a 8 minutos
 
 1. **Abertura — 40 s:** mostrar o aviso metodológico e explicar que não há recomendação de voto.
-2. **Como funciona — 50 s:** percorrer planos oficiais, preparação inicial com apoio do Gemini, JSON, questionário e cálculo determinístico.
+2. **Como funciona — 50 s:** percorrer planos oficiais, agente de IA generativa supervisionado, organização dos dados em JSON, questionário e cálculo determinístico.
 3. **Indicadores — 40 s:** apresentar candidaturas, planos, perguntas, temas e pesquisa própria.
 4. **Questionário — 2 min:** escolher uma alternativa por tema, variar pesos e marcar pelo menos um tema como “Não tenho opinião”.
 5. **Resultado — 1 min:** destacar os três primeiros, ICT e cobertura como indicadores diferentes.
@@ -60,7 +60,8 @@ O resultado esperado é uma lista de sete candidaturas deferidas ordenada determ
 - “Não tenho opinião” fica fora do cálculo.
 - Tema sem evidência fica fora do denominador daquela candidatura e reduz cobertura.
 - ICT mede correspondência; cobertura mede quanto foi possível comparar.
-- A IA organiza dados antes do uso; não escolhe candidatura nem calcula o ranking em tempo real.
+- O agente de IA generativa, baseado no Gemini e supervisionado pela equipe, apoiou apenas a preparação offline; não escolhe candidatura nem calcula o ranking.
+- Durante o questionário e o cálculo dos resultados, nenhuma IA é executada.
 - A preparação inicial ocorreu fora do código da aplicação e possui limitação de rastreabilidade técnica.
 
 ## 6. Planos alternativos
