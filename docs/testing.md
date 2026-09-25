@@ -4,4 +4,4 @@
 
 Testes manuais: carregar bootstrap, responder um tema, usar pesos diferentes, conferir três primeiros, barras, radar, memória, foto nominal, PDF local, TSE, documento e página/seção; repetir em viewport móvel. Conferir sete associações de fotos e planos e os três recortes do slide de pesquisa.
 
-Critérios de aceitação: ICT e cobertura permanecem determinísticos; respostas não são enviadas a IA; PDFs e fotos existem nos caminhos publicados; ausência é visível e não vira nota zero; não há segredo no repositório; `pytest` e `npm run build` passam.
+Critérios de aceitação: ICT e cobertura permanecem determinísticos; nenhum agente de IA é executado durante o questionário ou o cálculo; PDFs e fotos existem nos caminhos publicados; ausência é visível e não vira nota zero; não há segredo no repositório; `pytest` e `npm run build` passam.

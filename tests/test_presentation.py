@@ -213,7 +213,20 @@ def test_current_scope_and_pipeline_boundaries_are_explicit():
     assert "analyzedPages: 311" in data
     assert "themes: 7" in data
     assert "publishedQuestions: 7" in data
-    assert "Nenhuma inteligência artificial analisa as respostas durante o uso" in component
+    assert "Agente de IA generativa supervisionado" in component
+    assert "Baseado no Gemini e supervisionado pela equipe" in component
+    assert "O questionário e o cálculo não utilizam IA" in component
+    assert "Gemini em ambiente de notebook, utilizado na preparação offline dos dados" in component
+    for step in (
+        "Planos oficiais do TSE",
+        "Agente de IA generativa supervisionado",
+        "Organização dos temas e propostas",
+        "Perguntas e matriz em JSON",
+        "Questionário",
+        "Cálculo determinístico",
+        "Resultados e fontes",
+    ):
+        assert step in component
     assert "não possui rastreabilidade técnica completa" in component
     for obsolete in ("OCR", "PyPDF", "Tesseract", "manifesto", "revisão humana"):
         assert obsolete.casefold() not in component.casefold()
@@ -264,7 +277,7 @@ def test_reduced_motion_and_visible_focus_are_supported():
 
 def test_presentation_avoids_prohibited_claims():
     content = "\n".join(path.read_text(encoding="utf-8") for path in PRESENTATION.rglob("*.*") if path.suffix in {".js", ".jsx"}).casefold()
-    for expression in ("melhor candidato", "candidato ideal", "resultado certo", "ranking dos melhores", "a ia escolhe", "a ia recomenda"):
+    for expression in ("melhor candidato", "candidato ideal", "resultado certo", "ranking dos melhores", "a ia escolhe", "a ia recomenda", "agente autônomo", "agentes de ia"):
         assert expression not in content
 
 
