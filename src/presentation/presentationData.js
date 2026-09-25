@@ -4,12 +4,14 @@ export const PRESENTATION_DATA = Object.freeze({
   analyzedPages: 311,
   themes: 7,
   publishedQuestions: 7,
-  researchParticipants: 135,
+  // Valores atualizados e validados pela equipe para a apresentação em 25/09/2026.
+  // Conferir sincronização posterior com data/research_evidence.json.
+  researchParticipants: 136,
 });
 
 export const RESEARCH_RESULTS = Object.freeze([
-  { label: 'Conhecem poucas ou apenas algumas candidaturas', value: 80.7 },
-  { label: 'Não conhecem bem propostas de várias candidaturas', value: 97.8 },
+  { label: 'conhecem pouco ou apenas algumas candidaturas', value: 79.4 },
+  { label: 'dizem conhecer poucas propostas das candidaturas', value: 40.4 },
 ]);
 
 export const PUBLIC_SITE_URL = (
