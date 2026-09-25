@@ -83,12 +83,16 @@ def test_qr_code_is_not_rendered_by_shared_slide_footer():
 
 def test_only_demo_slide_renders_the_large_public_qr_code():
     component = source("Presentation.jsx")
+    data = source("presentationData.js")
     demo_case = component.split("case 'demo':", 1)[1].split("case 'limitacoes':", 1)[0]
     conclusion_case = component.split("case 'conclusao':", 1)[1].split("default:", 1)[0]
     assert component.count("<PresentationQRCode") == 1
     assert "<PresentationQRCode" in demo_case
     assert "<PresentationQRCode" not in conclusion_case
-    assert "https://voto-consciente.netlify.app/" in component
+    assert "<PresentationQRCode url={PUBLIC_SITE_URL}" in demo_case
+    assert "import.meta.env.VITE_PUBLIC_SITE_URL" in data
+    assert "https://voto-consciente.netlify.app/" in data
+    assert "https://voto-consciente.netlify.app/" not in component
 
 
 def test_demo_slide_is_qr_focused_and_removes_old_actions():
@@ -118,7 +122,7 @@ def test_external_context_links_open_safely():
     assert "veja.abril.com.br" in component
 
 
-def test_presentation_data_matches_current_repository_scope_except_team_validated_research():
+def test_presentation_data_matches_current_repository_scope_and_imports_official_research():
     candidates = json.loads((ROOT / "data" / "candidates.json").read_text(encoding="utf-8"))
     questions = json.loads((ROOT / "data" / "questions.json").read_text(encoding="utf-8"))
     presentation_data = source("presentationData.js")
@@ -130,9 +134,11 @@ def test_presentation_data_matches_current_repository_scope_except_team_validate
     }
     for key, value in expected.items():
         assert re.search(rf"{key}: {value},", presentation_data)
-    assert "researchParticipants: 136" in presentation_data
-    assert "Valores atualizados e validados pela equipe" in presentation_data
-    assert "Conferir sincronização posterior com data/research_evidence.json" in presentation_data
+    assert "import researchEvidence from '../../data/research_evidence.json'" in presentation_data
+    assert "researchParticipants: researchEvidence.sample_size" in presentation_data
+    assert "researchResult('candidate_awareness')" in presentation_data
+    assert "researchResult('proposal_awareness')" in presentation_data
+    assert "researchParticipants: 136" not in presentation_data
 
 
 def test_toolbar_stage_and_navigation_are_separate_structural_areas():
@@ -162,24 +168,55 @@ def test_controls_are_in_flow_outside_the_slide():
 def test_slide_seven_has_three_independent_evidence_cards_and_updated_values():
     component = source("Presentation.jsx")
     data = source("presentationData.js")
+    research = json.loads((ROOT / "data" / "research_evidence.json").read_text(encoding="utf-8"))
+    results = {item.get("id"): item for item in research["results"]}
     evidence_case = component.split("case 'evidencias':", 1)[1].split("case 'objetivo':", 1)[0]
     assert evidence_case.count("<EvidenceCard") == 3
-    for text in ("Pesquisa do grupo", "136 participantes", "69%", "88%", "59%"):
+    for text in ("Pesquisa do grupo", "69%", "88%", "59%"):
         assert text in component or text in data
-    for old_value in ("80.7", "97.8", "80,7%", "97,8%"):
-        assert old_value not in evidence_case
-        assert old_value not in data
-    assert "79.4" in data
-    assert "40.4" in data
+    assert research["sample_size"] == 136
+    assert results["candidate_awareness"]["percentage"] == 79.4
+    assert results["proposal_awareness"]["percentage"] == 40.4
+    assert "metrics.researchParticipants" in evidence_case
+    assert "RESEARCH_RESULTS.map" in evidence_case
+    for duplicated_value in ("136 participantes", "79.4", "40.4", "79,4%", "40,4%"):
+        assert duplicated_value not in data
+        assert duplicated_value not in evidence_case
 
 
 def test_slide_seven_states_context_and_limitations():
     component = source("Presentation.jsx")
     assert "amostra por conveniência" in component
     assert "não representam todo o eleitorado de Pernambuco" in component
-    assert "Rio de Janeiro, não a Pernambuco" in component
-    assert "Contexto histórico nacional de 2018" in component
-    assert "Percentuais informados pela equipe" in component
+    assert "Fonte externa referente ao Rio de Janeiro" in component
+    assert "Dado nacional usado como contexto histórico de 2018" in component
+    assert "Não representa Pernambuco em 2026" in component
+
+
+def test_question_example_comes_from_official_questions_json():
+    questions = json.loads((ROOT / "data" / "questions.json").read_text(encoding="utf-8"))
+    health = next(question for question in questions if question["id"] == "q1_saude")
+    data = source("presentationData.js")
+    component = source("Presentation.jsx")
+    assert "import questions from '../../data/questions.json'" in data
+    assert "question.id === 'q1_saude'" in data
+    assert "HEALTH_QUESTION.text" in component
+    assert "HEALTH_QUESTION.options.map" in component
+    assert health["text"] not in component
+
+
+def test_current_scope_and_pipeline_boundaries_are_explicit():
+    component = source("Presentation.jsx")
+    data = source("presentationData.js")
+    assert "candidacies: 7" in data
+    assert "officialPlans: 7" in data
+    assert "analyzedPages: 311" in data
+    assert "themes: 7" in data
+    assert "publishedQuestions: 7" in data
+    assert "Nenhuma inteligência artificial analisa as respostas durante o uso" in component
+    assert "não possui rastreabilidade técnica completa" in component
+    for obsolete in ("OCR", "PyPDF", "Tesseract", "manifesto", "revisão humana"):
+        assert obsolete.casefold() not in component.casefold()
 
 
 def test_evidence_cards_are_responsive_without_internal_scroll():

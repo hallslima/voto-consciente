@@ -18,6 +18,8 @@ A equipe informa que utilizou o Gemini, em uma etapa offline, como apoio para:
 
 Os arquivos originais dessa etapa não estão integralmente versionados no repositório. Por isso, a origem é declarada pela equipe, mas ainda possui limitação de rastreabilidade técnica.
 
+O Gemini foi utilizado como apoio na preparação inicial e offline das informações. Nenhuma inteligência artificial analisa as respostas durante o uso. Os resultados são calculados por regras matemáticas fixas.
+
 ## Aplicação publicada
 
 A execução normal utiliza somente:
@@ -29,6 +31,8 @@ A execução normal utiliza somente:
 - `scoring.py`.
 
 `app.py` carrega os JSONs e expõe o questionário e os resultados. O frontend envia as respostas e os pesos para a API. `scoring.py` consulta a matriz já estruturada e devolve pontuação, ICT, cobertura e memória de cálculo.
+
+`data/research_evidence.json` registra a pesquisa consolidada com 136 participantes. Os indicadores finais destacados são 79,4% que conhecem pouco ou apenas algumas candidaturas e 40,4% que dizem conhecer poucas propostas dos candidatos. A amostra é de conveniência, descreve apenas o grupo participante e não representa todo o eleitorado de Pernambuco.
 
 ## Papel da IA
 

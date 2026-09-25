@@ -1,11 +1,12 @@
 {
-  "sample_size": 135,
+  "sample_size": 136,
+  "publication_status": "Resultados consolidados e aprovados pela equipe para a versão final do projeto",
   "sampling_method": "Amostra por conveniência, divulgada na rede de contatos do grupo",
   "geographic_focus": "Pernambuco",
   "results": [
-    {"indicator": "Conhecem poucos ou apenas alguns dos oito candidatos", "percentage": 80.7},
+    {"id": "candidate_awareness", "indicator": "Conhecem pouco ou apenas algumas candidaturas", "percentage": 79.4},
     {"indicator": "Conseguem citar somente dois ou três candidatos", "percentage": 77.0},
-    {"indicator": "Não conhecem bem as propostas de vários candidatos", "percentage": 97.8},
+    {"id": "proposal_awareness", "indicator": "Dizem conhecer poucas propostas dos candidatos", "percentage": 40.4},
     {"indicator": "Consideram difícil ou muito difícil encontrar informações confiáveis", "percentage": 29.7},
     {"indicator": "Apontaram dificuldade para encontrar informações confiáveis", "percentage": 27.4},
     {"indicator": "Consideram que as informações estão espalhadas", "percentage": 19.3},
