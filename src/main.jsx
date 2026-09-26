@@ -2,7 +2,7 @@ import { StrictMode, useEffect, useMemo, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { apiUrl } from './api';
 import Presentation from './presentation/Presentation';
-import { DEMO_SLIDE_ID, presentationUrl } from './presentation/presentationData';
+import { PRESENTATION_RETURN_SLIDE_ID, presentationUrl } from './presentation/presentationData';
 import './styles.css';
 
 const NO_OPINION = 'NO_OPINION';
@@ -35,7 +35,9 @@ function App() {
   const [error, setError] = useState('');
   const [announcement, setAnnouncement] = useState('');
   const resultsSectionRef = useRef(null);
+  const firstQuestionRef = useRef(null);
   const shouldRevealResults = useRef(false);
+  const [shouldFocusFirstQuestion, setShouldFocusFirstQuestion] = useState(false);
 
   useEffect(() => {
     fetch(apiUrl('/api/bootstrap'))
@@ -67,6 +69,18 @@ function App() {
       section.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' });
     });
   }, [results]);
+
+  useEffect(() => {
+    if (!shouldFocusFirstQuestion || !firstQuestionRef.current) return;
+    setShouldFocusFirstQuestion(false);
+    const firstQuestion = firstQuestionRef.current;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}#primeira-pergunta`);
+    window.requestAnimationFrame(() => {
+      firstQuestion.focus({ preventScroll: true });
+      firstQuestion.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' });
+    });
+  }, [shouldFocusFirstQuestion]);
 
   const answeredCount = useMemo(
     () => Object.values(answers).filter((answer) => answer !== NO_OPINION).length,
@@ -143,7 +157,7 @@ function App() {
           <p className="eyebrow">Eleições · Pernambuco 2026</p>
           <h1>Seu voto começa<br /><em>nas suas prioridades.</em></h1>
           <p className="hero-text">Responda aos temas que importam para você e veja como suas escolhas se aproximam das propostas documentadas nos planos de governo.</p>
-          <div className="hero-actions"><a className="primary-button hero-button" href="#questionario">Começar questionário <span>↓</span></a><a className="quiet-link" href="#como-funciona">Entenda antes de começar →</a></div>
+          <div className="hero-actions"><button className="primary-button hero-button" type="button" onClick={() => setShouldFocusFirstQuestion(true)}>Começar questionário <span aria-hidden="true">↓</span></button><a className="quiet-link" href="#como-funciona">Entenda antes de começar →</a></div>
           <div className="trust-line"><span className="trust-dot" /> Sem cadastro <span className="dot-separator">·</span> Respostas não armazenadas <span className="dot-separator">·</span> Dados oficiais</div>
         </div>
         <div className="hero-demo" aria-label="Demonstração do questionário"><div className="demo-label">Como você pensa?</div><div className="demo-card"><span className="demo-index">01 / {data.questions.length}</span><h2>Qual tema deve receber mais atenção?</h2><p>Escolha uma alternativa que represente melhor a sua prioridade.</p><div className="demo-options"><span className="demo-option active"><i /> Saúde pública</span><span className="demo-option"><i /> Educação</span><span className="demo-option"><i /> Segurança</span></div><div className="demo-foot"><span>uma pergunta por vez</span><span>→</span></div></div></div>
@@ -154,11 +168,11 @@ function App() {
       <section className="how-it-works" id="como-funciona"><div className="how-intro"><p className="eyebrow">Como funciona</p><h2>Do plano<br /><em>ao resultado.</em></h2><p>Um agente de IA generativa, baseado no Gemini e supervisionado pela equipe, apoiou somente a preparação offline. A aplicação usa perguntas e matriz já estruturadas em JSON; nenhuma IA é executada durante o questionário ou o cálculo.</p></div><ol className="pipeline-steps" aria-label="Etapas de preparação e cálculo">{[['Planos oficiais do TSE', 'Documentos públicos mantidos para consulta.'], ['Agente de IA generativa supervisionado', 'Gemini em ambiente de notebook, usado antes da publicação.'], ['Organização dos temas e propostas', 'Leitura e estruturação realizadas com supervisão da equipe.'], ['Perguntas e matriz em JSON', 'Dados estruturados usados pelo MVP.'], ['Questionário', 'Respostas e pesos informados pelo usuário, sem execução de IA.'], ['Cálculo determinístico', 'Aplicação das mesmas regras matemáticas em Python.'], ['Resultados e fontes', 'Apresentação da correspondência temática.']].map(([title, description], index, steps) => <li className="pipeline-item" key={title}><span>{index + 1}</span><div><b>{title}</b><small>{description}</small></div>{index < steps.length - 1 && <i aria-hidden="true">→</i>}</li>)}</ol></section>
 
       {!results ? (
-        <Questionnaire data={data} answers={answers} weights={weights} setAnswer={setAnswer} setWeights={setWeights} answeredCount={answeredCount} onCalculate={calculate} submitting={submitting} error={error} />
+        <Questionnaire data={data} answers={answers} weights={weights} setAnswer={setAnswer} setWeights={setWeights} answeredCount={answeredCount} onCalculate={calculate} submitting={submitting} error={error} firstQuestionRef={firstQuestionRef} />
       ) : (
         <ResultsView results={results} candidates={candidateById} questions={data.questions} resultsRef={resultsSectionRef} selectedId={selectedId} setSelectedId={setSelectedId} openId={openId} setOpenId={setOpenId} onReview={reviewAnswers} onRestart={restart} />
       )}
-      {new URLSearchParams(window.location.search).get('origem') === 'apresentacao' && <a className="return-to-presentation" href={presentationUrl(new URLSearchParams(window.location.search).get('retorno') || DEMO_SLIDE_ID)}>Voltar à apresentação</a>}
+      {new URLSearchParams(window.location.search).get('origem') === 'apresentacao' && <a className="return-to-presentation" href={presentationUrl(new URLSearchParams(window.location.search).get('retorno') || PRESENTATION_RETURN_SLIDE_ID)}>Voltar à apresentação</a>}
       <p className="sr-only" aria-live="polite" aria-atomic="true">{announcement}</p>
       <footer><span>VOTO CONSCIENTE</span><span>A correspondência não avalia viabilidade, qualidade ou cumprimento das propostas.</span></footer>
     </main>
@@ -169,7 +183,7 @@ function MethodNotice() {
   return <aside className="method-notice" aria-label="Aviso metodológico"><strong>Transparência metodológica</strong><span>{METHODOLOGY_NOTICE}</span></aside>;
 }
 
-function Questionnaire({ data, answers, weights, setAnswer, setWeights, answeredCount, onCalculate, submitting, error }) {
+function Questionnaire({ data, answers, weights, setAnswer, setWeights, answeredCount, onCalculate, submitting, error, firstQuestionRef }) {
   return (
     <section className="workspace questionnaire-section" id="questionario">
       <div className="section-heading"><div><p className="eyebrow">01 / Questionário</p><h2>O que importa para você?</h2></div><div className="progress-copy"><strong>{answeredCount}</strong> de {data.questions.length} respondidos<div className="progress-track"><span style={{ width: `${(answeredCount / data.questions.length) * 100}%` }} /></div></div></div>
@@ -177,9 +191,9 @@ function Questionnaire({ data, answers, weights, setAnswer, setWeights, answered
       <section className="calculation-explainer" id="metodo" aria-labelledby="calculation-title"><h3 id="calculation-title">Como o resultado é calculado</h3><ol><li>Você escolhe uma resposta.</li><li>Você informa o quanto aquele tema é importante.</li><li>O sistema verifica quanto a resposta se aproxima das propostas documentadas.</li><li>Os pontos são somados e transformados em uma porcentagem.</li></ol><div className="calculation-tables"><div><h4>Importância do tema</h4><div className="plain-table" role="table" aria-label="Pesos de importância"><div role="row"><b>Normal · peso 1</b><span>Importância comum.</span></div><div role="row"><b>Importante · peso 2</b><span>Vale duas vezes mais.</span></div><div role="row"><b>Prioridade máxima · peso 3</b><span>Vale três vezes mais.</span></div></div></div><div><h4>Compatibilidade</h4><div className="plain-table" role="table" aria-label="Níveis de compatibilidade"><div role="row"><b>1</b><span>Corresponde diretamente.</span></div><div role="row"><b>0,5</b><span>Corresponde parcialmente.</span></div><div role="row"><b>0</b><span>Segue abordagem diferente.</span></div></div></div></div><div className="fictional-example"><b>Exemplo simples</b><span>Saúde com peso 3 e correspondência total: 3 pontos.</span><span>Transporte com peso 2 e correspondência parcial: 1 ponto.</span></div><details className="formula-details"><summary>Ver fórmula completa</summary><p><b>Em cada tema:</b> peso atribuído × compatibilidade (0, 0,5 ou 1) = pontos ponderados.</p><p><b>ICT:</b> soma dos pontos ÷ soma dos pesos válidos × 100.</p></details><ul className="calculation-caveats"><li>“Não tenho opinião” não participa do cálculo.</li><li>Ausência de evidência não significa que a candidatura seja contra.</li><li>Temas sem evidência não entram no ICT daquela candidatura; a ausência aparece separadamente na cobertura.</li><li>A porcentagem não mede qualidade, viabilidade ou chance de cumprimento.</li><li>A ferramenta mostra correspondência temática e não recomenda voto.</li></ul></section>
       <div className="questions-list">
         {data.questions.map((question, index) => (
-          <article className={`question-card ${answers[question.id] !== 'NO_OPINION' ? 'is-answered' : ''}`} key={question.id}>
+          <article className={`question-card ${answers[question.id] !== 'NO_OPINION' ? 'is-answered' : ''}`} id={index === 0 ? 'primeira-pergunta' : undefined} ref={index === 0 ? firstQuestionRef : undefined} tabIndex={index === 0 ? -1 : undefined} aria-labelledby={`question-title-${question.id}`} key={question.id}>
             <div className="question-meta"><span className="question-number">0{index + 1}</span><span className="theme-label">{question.theme}</span><span className="answer-status">{answers[question.id] !== 'NO_OPINION' ? 'Respondido' : 'Pendente'}</span></div>
-            <h3>{question.text}</h3>
+            <h3 id={`question-title-${question.id}`}>{question.text}</h3>
             <div className="option-list">
               {question.options.map((option) => <button type="button" aria-pressed={answers[question.id] === option.id} className={`option ${answers[question.id] === option.id ? 'selected' : ''}`} onClick={() => setAnswer(question.id, option.id)} key={option.id}><span className="option-letter">{option.id}</span><span>{option.text}</span><span className="check">✓<span className="sr-only"> Selecionada</span></span></button>)}
               <button type="button" className={`option neutral ${answers[question.id] === NO_OPINION ? 'selected' : ''}`} onClick={() => setAnswer(question.id, NO_OPINION)}><span className="option-letter">—</span><span>Não tenho opinião formada</span><span className="check">✓</span></button>

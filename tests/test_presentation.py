@@ -23,11 +23,14 @@ def test_presentation_mode_is_selected_before_app_bootstrap():
     assert "presentationMode ? <Presentation /> : <App />" in main
 
 
-def test_deck_has_eighteen_unique_slides_and_demo_id():
+def test_deck_has_fourteen_unique_slides_and_removed_sections_are_absent():
     ids = [item[0] for item in slide_metadata()]
-    assert len(ids) == 18
+    assert len(ids) == 14
     assert len(ids) == len(set(ids))
-    assert ids[15] == "demo"
+    assert ids[-1] == "conclusao"
+    assert {"questionario", "motor", "cobertura", "demo"}.isdisjoint(ids)
+    titles = {item[1] for item in slide_metadata()}
+    assert {"Questionário e importância", "Motor matemático", "Correspondência e cobertura", "Demonstração do MVP"}.isdisjoint(titles)
 
 
 def test_progressive_reveal_is_limited_to_three_opening_questions():
@@ -61,12 +64,12 @@ def test_fullscreen_and_print_require_explicit_buttons():
     assert "onClick={() => window.print()}" in component
 
 
-def test_demo_round_trip_uses_named_demo_slide():
+def test_round_trip_uses_named_conclusion_slide():
     main = (ROOT / "src" / "main.jsx").read_text(encoding="utf-8")
     data = source("presentationData.js")
-    assert "DEMO_SLIDE_ID = 'demo'" in data
+    assert "PRESENTATION_RETURN_SLIDE_ID = 'conclusao'" in data
     assert "origem', 'apresentacao'" in data
-    assert "retorno', DEMO_SLIDE_ID" in data
+    assert "retorno', PRESENTATION_RETURN_SLIDE_ID" in data
     assert "return-to-presentation" in main
 
 
@@ -81,34 +84,32 @@ def test_qr_code_is_not_rendered_by_shared_slide_footer():
     assert "api.qrserver" not in qr.lower()
 
 
-def test_only_demo_slide_renders_the_large_public_qr_code():
+def test_only_conclusion_slide_renders_the_large_public_qr_code():
     component = source("Presentation.jsx")
     data = source("presentationData.js")
-    demo_case = component.split("case 'demo':", 1)[1].split("case 'limitacoes':", 1)[0]
     conclusion_case = component.split("case 'conclusao':", 1)[1].split("default:", 1)[0]
     assert component.count("<PresentationQRCode") == 1
-    assert "<PresentationQRCode" in demo_case
-    assert "<PresentationQRCode" not in conclusion_case
-    assert "<PresentationQRCode url={PUBLIC_SITE_URL}" in demo_case
+    assert "<PresentationQRCode url={PUBLIC_SITE_URL}" in conclusion_case
+    assert "{PUBLIC_SITE_URL}/" in conclusion_case
     assert "import.meta.env.VITE_PUBLIC_SITE_URL" in data
     assert "https://voto-consciente.netlify.app/" in data
     assert "https://voto-consciente.netlify.app/" not in component
 
 
-def test_demo_slide_is_qr_focused_and_removes_old_actions():
+def test_conclusion_combines_message_call_to_action_and_qr():
     component = source("Presentation.jsx")
-    demo_case = component.split("case 'demo':", 1)[1].split("case 'limitacoes':", 1)[0]
-    assert "Aponte a câmera do celular e responda ao questionário" in demo_case
-    assert "Voto Consciente Pernambuco" in demo_case
-    assert "Não é necessário fazer cadastro." in demo_case
-    for removed in ("A demonstração abre", "Abrir demonstração", "mini-browser", "demo-preview"):
-        assert removed not in demo_case
+    conclusion_case = component.split("case 'conclusao':", 1)[1].split("default:", 1)[0]
+    assert "O projeto não diz em quem o eleitor deve votar" in conclusion_case
+    assert "Aponte a câmera ou acesse o endereço" in conclusion_case
+    assert "Não é necessário fazer cadastro." in conclusion_case
+    assert "Abrir o MVP" in conclusion_case
+    assert "case 'demo':" not in component
 
 
-def test_demo_qr_has_prominent_responsive_size():
+def test_conclusion_qr_has_prominent_responsive_size():
     css = source("Presentation.css")
-    rule = re.search(r"\.demo-qr-code \{([^}]+)\}", css).group(1)
-    assert "width: clamp(260px, 28vw, 380px)" in rule
+    rule = re.search(r"\.presentation-qr-code \{([^}]+)\}", css).group(1)
+    assert "width: clamp(250px, 26vw, 390px)" in rule
     assert "aspect-ratio: 1" in rule
 
 
@@ -186,23 +187,89 @@ def test_slide_seven_has_three_independent_evidence_cards_and_updated_values():
 
 def test_slide_seven_states_context_and_limitations():
     component = source("Presentation.jsx")
-    assert "amostra por conveniência" in component
-    assert "não representam todo o eleitorado de Pernambuco" in component
-    assert "Fonte externa referente ao Rio de Janeiro" in component
-    assert "Dado nacional usado como contexto histórico de 2018" in component
-    assert "Não representa Pernambuco em 2026" in component
+    evidence_case = component.split("case 'evidencias':", 1)[1].split("case 'objetivo':", 1)[0]
+    expected = (
+        "Conhecem pouco ou apenas algumas candidaturas",
+        "Dizem conhecer poucas propostas dos candidatos",
+        "amostra por conveniência",
+        "se dizem indecisos sobre o voto para governador",
+        "se dizem indecisos sobre o voto para o Senado",
+        "Fonte externa referente ao Rio de Janeiro",
+        "dos brasileiros não sabiam em quem votar ou declaravam intenção de votar em branco ou nulo",
+        "Dado nacional usado como contexto histórico de 2018",
+        "Não representa Pernambuco em 2026",
+    )
+    research = json.loads((ROOT / "data" / "research_evidence.json").read_text(encoding="utf-8"))
+    combined = evidence_case + json.dumps(research, ensure_ascii=False)
+    assert all(text in combined for text in expected)
 
 
-def test_question_example_comes_from_official_questions_json():
-    questions = json.loads((ROOT / "data" / "questions.json").read_text(encoding="utf-8"))
-    health = next(question for question in questions if question["id"] == "q1_saude")
-    data = source("presentationData.js")
+def test_slide_seven_uses_projectable_type_hierarchy():
+    css = source("Presentation.css")
+    metric_value = re.search(r"\.evidence-metric strong \{([^}]+)\}", css).group(1)
+    metric_label = re.search(r"\.evidence-metric span \{([^}]+)\}", css).group(1)
+    disclaimer = re.search(r"\.evidence-card__source \{([^}]+)\}", css).group(1)
+    assert "clamp(2rem, 3.2vw, 3.5rem)" in metric_value
+    assert "clamp(1.05rem, 1.35vw, 1.45rem)" in metric_label
+    assert "font-size: var(--slide-small-size)" in disclaimer
+
+
+def test_slides_eight_ten_eleven_twelve_and_thirteen_are_top_aligned_by_semantic_id():
+    css = source("Presentation.css")
+    expected_ids = ("objetivo", "preparacao", "perguntas", "arquitetura", "limitacoes")
+    for slide_id in expected_ids:
+        assert f".presentation-slide--{slide_id} .slide-content" in css
+    alignment_rule = css.split(".presentation-slide--evidencias .slide-content", 1)[1].split("}", 1)[0]
+    assert "justify-content: flex-start" in alignment_rule
+    assert "padding-top: clamp(" in alignment_rule
+
+
+def test_slide_eleven_has_five_cards_in_two_then_three_structure():
     component = source("Presentation.jsx")
-    assert "import questions from '../../data/questions.json'" in data
-    assert "question.id === 'q1_saude'" in data
-    assert "HEALTH_QUESTION.text" in component
-    assert "HEALTH_QUESTION.options.map" in component
-    assert health["text"] not in component
+    css = source("Presentation.css")
+    questions_case = component.split("case 'perguntas':", 1)[1].split("case 'arquitetura':", 1)[0]
+    for title in ("Fonte dos dados", "Organização temática", "Identificação dos contrastes", "Formulação", "Limite metodológico"):
+        assert questions_case.count(title) == 1
+    assert "grid-template-columns: repeat(6, minmax(0, 1fr))" in css
+    assert ".method-steps > :nth-child(-n + 2) { grid-column: span 3; }" in css
+    assert ".method-steps > :nth-child(n + 3) { grid-column: span 2; }" in css
+
+
+def test_slide_thirteen_has_eight_numbered_limitations():
+    component = source("Presentation.jsx")
+    limitations_case = component.split("case 'limitacoes':", 1)[1].split("case 'conclusao':", 1)[0]
+    expected = (
+        "Compara somente conteúdo documentado",
+        "Não avalia viabilidade jurídica, técnica ou financeira",
+        "Não prevê cumprimento das propostas",
+        "Planos têm níveis diferentes de detalhamento",
+        "A classificação parcial exige julgamento metodológico",
+        "Pesquisa própria por conveniência",
+        "Recorte exclusivo do Governo de Pernambuco",
+        "A preparação inicial ocorreu fora do código e ainda possui limitação de rastreabilidade técnica",
+    )
+    assert all(limitations_case.count(text) == 1 for text in expected)
+    assert "map((item, index)" in limitations_case
+    assert "String(index + 1).padStart(2, '0')" in limitations_case
+
+
+def test_method_and_limitations_grids_have_responsive_and_print_layouts():
+    css = source("Presentation.css")
+    tablet = css.split("@media (max-width: 900px)", 1)[1].split("@media (max-width: 700px)", 1)[0]
+    mobile = css.split("@media (max-width: 700px)", 1)[1].split("@media (max-width: 380px)", 1)[0]
+    print_css = css.split("@media print", 1)[1]
+    assert ".method-steps { grid-template-columns: repeat(2, minmax(0, 1fr))" in tablet
+    assert ".method-steps > :last-child { grid-column: 1 / -1; }" in tablet
+    assert ".method-steps { grid-template-columns: 1fr" in mobile
+    assert ".limitations-grid { grid-template-columns: 1fr" in mobile
+    assert ".print-deck .method-steps" in print_css
+    assert ".print-deck .limitations-grid" in print_css
+
+
+def test_removed_question_example_is_not_left_in_presentation():
+    component = source("Presentation.jsx")
+    assert "HEALTH_QUESTION" not in component
+    assert "case 'questionario':" not in component
 
 
 def test_current_scope_and_pipeline_boundaries_are_explicit():
@@ -234,12 +301,53 @@ def test_current_scope_and_pipeline_boundaries_are_explicit():
 
 def test_evidence_cards_are_responsive_without_internal_scroll():
     css = source("Presentation.css")
-    assert "grid-template-columns: repeat(3, minmax(0, 1fr))" in css
-    assert "grid-template-columns: repeat(2, minmax(0, 1fr))" in css
-    mobile = css.split("@media (max-width: 700px)", 1)[1].split("@media (max-width: 380px)", 1)[0]
-    assert ".evidence-grid { grid-template-columns: 1fr" in mobile
     evidence_rule = re.search(r"\.evidence-card \{([^}]+)\}", css).group(1)
+    assert "grid-template-columns: minmax(180px, .72fr) minmax(0, 1.45fr) minmax(220px, 1fr)" in evidence_rule
+    mobile = css.split("@media (max-width: 700px)", 1)[1].split("@media (max-width: 380px)", 1)[0]
+    assert ".evidence-card { grid-template-columns: minmax(0, .7fr)" in mobile
     assert "overflow" not in evidence_rule
+
+
+def test_presentation_uses_centralized_type_spacing_and_card_tokens():
+    css = source("Presentation.css")
+    shell = re.search(r"\.presentation-shell \{([^}]+)\}", css, re.S).group(1)
+    expected_tokens = (
+        "--slide-title-size",
+        "--slide-question-size",
+        "--slide-subtitle-size",
+        "--slide-highlight-size",
+        "--slide-body-size",
+        "--slide-small-size",
+        "--slide-gap-xs",
+        "--slide-gap-sm",
+        "--slide-gap-md",
+        "--slide-gap-lg",
+        "--slide-gap-xl",
+        "--slide-padding-inline",
+        "--slide-padding-block",
+        "--slide-card-padding",
+        "--slide-card-radius",
+        "--slide-border",
+    )
+    assert all(token in shell for token in expected_tokens)
+    assert "--slide-body-size: clamp(1.125rem" in shell
+    assert "--slide-small-size: clamp(1.125rem" in shell
+
+
+def test_informational_text_uses_minimum_eighteen_pixel_tokens_and_strong_contrast():
+    css = source("Presentation.css")
+    for selector in (
+        ".slide-kicker",
+        ".slide-eyebrow",
+        ".slide-footer",
+        ".method-steps small",
+        ".tech-diagram span",
+        ".closing-qr__url",
+    ):
+        rule = re.search(rf"{re.escape(selector)} \{{([^}}]+)\}}", css).group(1)
+        assert "var(--slide-small-size)" in rule
+    for color in ("#0d554d", "#263d38", "#42544f", "#a33f32"):
+        assert color in css
 
 
 def test_print_hides_all_controls_and_keeps_only_slide_deck():
@@ -257,8 +365,30 @@ def test_slide_footer_keeps_no_qr_placeholder_or_qr_styles():
     assert "<Slide slide={current}" in component
     assert "slides.map((slide, index) => <Slide" in component
     assert "justify-content: space-between" not in re.search(r"\.slide-footer \{([^}]+)\}", css).group(1)
-    assert "presentation-qr" not in css
+    footer_rule = re.search(r"\.slide-footer \{([^}]+)\}", css).group(1)
+    assert "presentation-qr" not in footer_rule
     assert "Acesse o MVP" not in slide
+
+
+def test_team_name_and_order_are_consistent():
+    component = source("Presentation.jsx")
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    expected = ["Ben-hur Queiroz", "Hallisson Lima", "Lucas Kamel", "Rodrigo Monteiro", "Thamyres Costa"]
+    assert "Ben-Hur Cavalcanti" not in component
+    assert "Ben-Hur Cavalcanti" not in readme
+    assert "const TEAM = ['" + "', '".join(expected) + "'];" in component
+    positions = [readme.index(f"- {name}") for name in expected]
+    assert positions == sorted(positions)
+
+
+def test_flow_has_no_arrow_after_last_step_and_snakes_without_empty_target():
+    flow = source("components/SlideFlow.jsx")
+    css = source("Presentation.css")
+    assert "index < steps.length - 1" in flow
+    assert ".slide-flow li:nth-child(5) { grid-column: 4; grid-row: 2; }" in css
+    assert ".slide-flow li:nth-child(7) { grid-column: 2; grid-row: 2; }" in css
+    mobile = css.split("@media (max-width: 700px)", 1)[1].split("@media (max-width: 380px)", 1)[0]
+    assert ".slide-flow { grid-template-columns: 1fr" in mobile
 
 
 def test_print_css_uses_one_widescreen_slide_per_page():

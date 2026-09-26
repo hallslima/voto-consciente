@@ -80,11 +80,11 @@ Essa descrição se limita ao comportamento da aplicação. Políticas e logs op
 
 ## Integrantes
 
+- Ben-hur Queiroz
 - Hallisson Lima
-- Rodrigo Monteiro
 - Lucas Kamel
+- Rodrigo Monteiro
 - Thamyres Costa
-- Ben-Hur Cavalcanti
 
 ## Instalação e execução local
 
