@@ -74,6 +74,21 @@ def test_result_help_actions_and_accessible_weights_are_present():
     assert "scrollIntoView" in source
 
 
+def test_start_questionnaire_focuses_and_scrolls_to_first_question_accessibly():
+    source = (ROOT / "src" / "main.jsx").read_text(encoding="utf-8")
+    styles = (ROOT / "src" / "styles.css").read_text(encoding="utf-8")
+    assert 'onClick={() => setShouldFocusFirstQuestion(true)}' in source
+    assert "firstQuestionRef.current" in source
+    assert "firstQuestion.focus({ preventScroll: true })" in source
+    assert "firstQuestion.scrollIntoView" in source
+    assert "prefers-reduced-motion: reduce" in source
+    assert "reducedMotion ? 'auto' : 'smooth'" in source
+    assert "id={index === 0 ? 'primeira-pergunta'" in source
+    assert "tabIndex={index === 0 ? -1" in source
+    assert "aria-labelledby={`question-title-${question.id}`}" in source
+    assert "scroll-margin-top: 104px" in styles
+
+
 def test_question_and_option_ids_are_the_expected_contract():
     questions = load("questions.json")
     assert [question["id"] for question in questions] == [

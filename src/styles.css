@@ -71,7 +71,8 @@ h2 { margin-bottom: 0; font-size: clamp(30px, 4vw, 48px); letter-spacing: -.04em
 .methodology-note summary { width: fit-content; padding: 12px 0; color: var(--teal); cursor: pointer; font-weight: 700; list-style-position: outside; }
 .methodology-note p { max-width: 720px; margin: 0 0 8px 17px; line-height: 1.55; }.methodology-note span { display: block; margin: 0 0 15px 17px; color: var(--coral); font-size: 10px; }
 .questions-list { display: grid; gap: 17px; }
-.question-card { background: rgba(251, 250, 246, .9); border: 1px solid var(--line); padding: 29px 31px 24px; transition: border-color .2s, box-shadow .2s, transform .2s; box-shadow: 0 1px 0 rgba(255, 255, 255, .8) inset; }
+.question-card { scroll-margin-top: 104px; background: rgba(251, 250, 246, .9); border: 1px solid var(--line); padding: 29px 31px 24px; transition: border-color .2s, box-shadow .2s, transform .2s; box-shadow: 0 1px 0 rgba(255, 255, 255, .8) inset; }
+.question-card:focus-visible { outline: 3px solid var(--coral); outline-offset: 5px; }
 .question-card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
 .question-card.is-answered { border-color: #a9c4a7; box-shadow: 4px 4px 0 #e3ead7; }
 .question-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 17px; }
