@@ -301,11 +301,65 @@ def test_current_scope_and_pipeline_boundaries_are_explicit():
 
 def test_evidence_cards_are_responsive_without_internal_scroll():
     css = source("Presentation.css")
+    grid_rule = re.search(r"\.evidence-grid \{([^}]+)\}", css).group(1)
     evidence_rule = re.search(r"\.evidence-card \{([^}]+)\}", css).group(1)
-    assert "grid-template-columns: minmax(180px, .72fr) minmax(0, 1.45fr) minmax(220px, 1fr)" in evidence_rule
-    mobile = css.split("@media (max-width: 700px)", 1)[1].split("@media (max-width: 380px)", 1)[0]
-    assert ".evidence-card { grid-template-columns: minmax(0, .7fr)" in mobile
+    assert "grid-template-columns: repeat(3, minmax(0, 1fr))" in grid_rule
+    assert "flex-direction: column" in evidence_rule
+    assert "min-height: 0" in evidence_rule
     assert "overflow" not in evidence_rule
+
+
+def test_slide_frame_uses_one_bounded_sixteen_by_nine_viewport():
+    css = source("Presentation.css")
+    frame = re.search(r"\.presentation-slide-frame \{([^}]+)\}", css, re.S).group(1)
+    slide = re.search(r"\.presentation-slide \{([^}]+)\}", css, re.S).group(1)
+    assert "aspect-ratio: 16 / 9" in frame
+    assert "calc(100cqh * 16 / 9)" in frame
+    assert "max-width: 100%" in frame
+    assert "max-height: 100%" in frame
+    assert "container-type: size" in frame
+    assert "width: 1600px" in slide
+    assert "height: 900px" in slide
+    assert "transform: scale(calc(100cqw / 1600px))" in slide
+    assert "transform-origin: top left" in slide
+    assert "min-height: 0" in slide
+    assert "box-sizing: border-box" in slide
+    assert "grid-template-rows: auto minmax(0, 1fr) auto" in slide
+
+
+def test_slide_footer_has_dedicated_grid_row_and_content_can_shrink():
+    css = source("Presentation.css")
+    content = re.search(r"\.slide-content \{([^}]+)\}", css).group(1)
+    footer = re.search(r"\.slide-footer \{([^}]+)\}", css).group(1)
+    assert "min-height: 0" in content
+    assert "position: absolute" not in footer
+    assert "position: relative" in footer
+
+
+def test_problem_slide_uses_two_columns_three_rows_without_fixed_card_height():
+    component = source("Presentation.jsx")
+    css = source("Presentation.css")
+    problem_case = component.split("case 'problema':", 1)[1].split("case 'evidencias':", 1)[0]
+    for item in ("Planos extensos", "Documentos pouco padronizados", "Comparação difícil", "Candidaturas pouco conhecidas", "Propostas difíceis de localizar no TSE"):
+        assert problem_case.count(item) == 1
+    grid = re.search(r"\.problem-grid \{([^}]+)\}", css).group(1)
+    card = re.search(r"\.problem-grid > div \{([^}]+)\}", css).group(1)
+    assert "repeat(2, minmax(0, 1fr))" in grid
+    assert "repeat(3, minmax(0, 1fr))" in grid
+    assert "min-height: 0" in card
+    assert not re.search(r"(?<!min-)height\s*:", card)
+
+
+def test_print_uses_same_grid_frame_and_exact_sixteen_by_nine_page():
+    css = source("Presentation.css")
+    print_css = css.split("@media print", 1)[1]
+    assert "size: 13.333in 7.5in" in print_css
+    assert "width: 13.333in !important" in print_css
+    assert "height: 7.5in !important" in print_css
+    assert "max-height: 7.5in !important" in print_css
+    assert "display: grid !important" in print_css
+    assert "grid-template-rows: auto minmax(0, 1fr) auto !important" in print_css
+    assert ".print-deck .evidence-grid { grid-template-columns: repeat(3" in print_css
 
 
 def test_presentation_uses_centralized_type_spacing_and_card_tokens():
